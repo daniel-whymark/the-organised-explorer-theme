@@ -5,18 +5,7 @@
         {{#match headerStyle "!=" "Magazine"}}
         {{#match headerStyle "!=" "Highlight"}}
             {{#if @site.cover_image}}
-                <img
-                    class="gh-header-image"
-                    fetchpriority="high"
-                    srcset="{{img_url @site.cover_image size="s" format="webp"}} 320w,
-                            {{img_url @site.cover_image size="m" format="webp"}} 600w,
-                            {{img_url @site.cover_image size="l" format="webp"}} 960w,
-                            {{img_url @site.cover_image size="xl" format="webp"}} 1200w,
-                            {{img_url @site.cover_image size="xxl" format="webp"}} 2000w"
-                    sizes="100vw"
-                    src="{{img_url @site.cover_image size="xl"}}"
-                    alt="{{@site.title}}"
-                >
+                <img class="gh-header-image" src="{{@site.cover_image}}" alt="{{@site.title}}">
             {{/if}}
         {{/match}}
         {{/match}}
@@ -74,13 +63,27 @@
 
         {{!-- Landing layout --}}
         {{#match headerStyle "Landing"}}
-            <h1 class="gh-header-title is-title">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
+            <div class="is-title">
+                <h1 class="gh-header-title">
+                    {{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.title}}{{/if}}
+                </h1>
+                <h3 class="gh-header-subtitle">
+                    {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
+                </h3>
+            </div>
             {{> "email-subscription" email_field_id="header-email"}}
         {{/match}}
 
         {{!-- Search layout --}}
         {{#match headerStyle "Search"}}
-            <h1 class="gh-header-title is-title">{{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.description}}{{/if}}</h1>
+            <div class="is-title">
+                <h1 class="gh-header-title">
+                    {{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.title}}{{/if}}
+                </h1>
+                <h3 class="gh-header-subtitle">
+                    {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
+                </h3>
+            </div>
             <form class="gh-form">
                 {{> "icons/search"}}
                 <button class="gh-form-input" data-ghost-search>{{t "Search posts, tags and authors"}}</button>
