@@ -1,0 +1,41 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+{{#post}}
+
+<main class="gh-main gh-outer">
+    <article class="gh-article {{post_class}}">
+
+        {{#match @page.show_title_and_feature_image}}
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title is-title">{{title}}</h1>
+                {{#if custom_excerpt}}
+                    <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+                {{/if}}
+                {{> "feature-image"}}
+            </header>
+        {{/match}}
+
+        {{#get 'tags' limit='all' include='count.posts' filter="slug:~^'continent-'"}}
+            {{#foreach tags}}
+                <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
+                    <div class="gh-archive-inner">
+                        <header class="gh-archive-wrapper">
+                            <h1 class="gh-article-title is-title">{{name}}</h1>
+                            {{#if description}}
+                                <p class="gh-article-excerpt">{{description}}</p>
+                            {{/if}}
+                            <p>
+                            {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+                            </p>
+
+                        </header>
+                        {{> "feature-image"}}
+                    </div>
+                </section>
+            {{/foreach}}
+        {{/get}}
+    </article>
+</main>
+
+{{/post}}
