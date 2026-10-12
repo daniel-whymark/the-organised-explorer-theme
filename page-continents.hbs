@@ -3,7 +3,7 @@
 
 {{#post}}
 
-<main class="gh-main gh-outer">
+<main class="gh-main">
     <article class="gh-article {{post_class}}">
 
         {{#match @page.show_title_and_feature_image}}
@@ -16,25 +16,30 @@
             </header>
         {{/match}}
 
-        {{#get 'tags' limit='all' include='count.posts' filter="slug:~^'continent-'"}}
-            {{#foreach tags}}
-                <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
-                    <div class="gh-archive-inner">
-                        <header class="gh-archive-wrapper">
-                            <h1 class="gh-article-title is-title">{{name}}</h1>
-                            {{#if description}}
-                                <p class="gh-article-excerpt">{{description}}</p>
-                            {{/if}}
-                            <p>
-                            {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
-                            </p>
 
-                        </header>
-                        {{> "feature-image"}}
-                    </div>
-                </section>
-            {{/foreach}}
-        {{/get}}
+            <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
+                <div class="gh-container-inner gh-inner">
+
+                    <main class="gh-main gh-content">
+                        <div class="gh-feed">
+                            {{#get 'tags' limit='all' include='count.posts' order='name asc' filter="slug:~^'continent-'"}}
+                                {{#foreach tags}}
+                                    {{> "tag-card" title=name }}
+                                {{/foreach}}
+                            {{/get}}
+
+                        </div>
+
+                        {{#match pagination.pages ">" 1}}
+                            <div class="gh-more is-title">
+                                <a href="{{@site.url}}/page/2/">{{t "See all"}} {{> "icons/arrow"}}</a>
+                            </div>
+                        {{/match}}
+                    </main>
+
+                </div>
+            </section>
+
     </article>
 </main>
 
