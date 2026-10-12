@@ -9,3 +9,4 @@
 - Post details on small width screens
 - Fish trail gallery test
 - Dark(er) mode
+- Drop shadow on grid boxes
