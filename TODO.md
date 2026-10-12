@@ -10,3 +10,9 @@
 - Fish trail gallery test
 - Dark(er) mode
 - Drop shadow on grid boxes
+- Update map links
+- Remove banner
+- Review welcome emails
+- Migrate domain
+- Connect stripe
+- Enable federation
