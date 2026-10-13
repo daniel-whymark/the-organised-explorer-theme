@@ -4,9 +4,7 @@
 - RSS to socials (https://test.theorganisedexplorer.com/rss/)
 - Grid images sizing/orientation
 - Dark(er) mode
-- Drop shadow on grid boxes
 - Date/time in cards
-- Tag card fmt colours
 - Facebook
 
 - Fish trail gallery test
@@ -14,6 +12,8 @@
 - Review welcome emails
 
 - Migrate domain
+- Emails (Portal, smtp)
+- Update Mailgun
 - Connect stripe
 - Enable federation
 - Migrate members
