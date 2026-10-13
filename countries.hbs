@@ -1,20 +1,29 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
-<main class="gh-main">
+{{#page}}
 
+    {{#match @page.show_title_and_feature_image}}
         <header class="gh-article-header gh-canvas">
-            <h1 class="gh-article-title is-title">Countries</h1>
-            <p class="gh-article-excerpt is-body">Explore posts about my travels, grouped by countries, states or territories.</p>
+            <h1 class="gh-article-title is-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+            {{/if}}
+            {{> "feature-image"}}
         </header>
+    {{/match}}
 
+    <div class="gh-content is-body">
+
+        <section class="gh-canvas">
+            {{content}}
+        </section>
 
         <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
             <div class="gh-container-inner gh-inner">
-
                 <main class="gh-main">
                     <div class="gh-feed">
-                        {{#get 'tags' limit='all' include='count.posts' order='name asc' filter="slug:~^'country-'"}}
+                        {{#get "tags" limit="all" include="count.posts" order="name asc" filter="slug:~^'country-'"}}
                             {{#foreach tags}}
                                 {{> "tag-card" title=name }}
                             {{/foreach}}
@@ -31,5 +40,6 @@
 
             </div>
         </section>
+    </div>
 
-</main>
+{{/page}}
