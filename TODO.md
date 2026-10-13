@@ -1,7 +1,5 @@
 # TODO
 
-- Pintrest social icon
-- RSS to socials (https://test.theorganisedexplorer.com/rss/)
 - Grid images sizing/orientation
 - Dark(er) mode
 - Date/time in cards
@@ -10,6 +8,7 @@
 - Fish trail gallery test
 - Review banner
 - Review welcome emails
+- Integrations
 
 - Migrate domain
 - Emails (Portal, smtp)
