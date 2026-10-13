@@ -19,4 +19,5 @@
 - Grid images sizing/orientation
 - Migrate members
 - RSS to socials (https://test.theorganisedexplorer.com/rss/)
--
+- Date/time in cards
+- Tag card colour
