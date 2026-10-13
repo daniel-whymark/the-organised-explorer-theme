@@ -1,23 +1,20 @@
 # TODO
 
-- Review routing strategy for categories
-- Continents page
-- Countries page
-- Cities page
-- Tag descriptions
 - Pintrest social icon
-- Post details on small width screens
-- Fish trail gallery test
+- RSS to socials (https://test.theorganisedexplorer.com/rss/)
+- Grid images sizing/orientation
 - Dark(er) mode
 - Drop shadow on grid boxes
-- Update map links
-- Remove banner
+- Date/time in cards
+- Tag card fmt colours
+- Facebook
+
+- Fish trail gallery test
+- Review banner
 - Review welcome emails
+
 - Migrate domain
 - Connect stripe
 - Enable federation
-- Grid images sizing/orientation
 - Migrate members
-- RSS to socials (https://test.theorganisedexplorer.com/rss/)
-- Date/time in cards
-- Tag card colour
+- Update map links
