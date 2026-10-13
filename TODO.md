@@ -17,4 +17,6 @@
 - Connect stripe
 - Enable federation
 - Grid images sizing/orientation
-- 
+- Migrate members
+- RSS to socials (https://test.theorganisedexplorer.com/rss/)
+-
