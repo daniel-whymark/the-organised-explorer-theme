@@ -1,14 +1,11 @@
 # TODO
 
-- Grid images sizing/orientation
-- Dark(er) mode
-- Date/time in cards
-- Facebook
+- Facebook posts to posts
 
-- Fish trail gallery test
+- Fish trail gallery test (take backup)
 - Review banner
 - Review welcome emails
-- Integrations
+- Review available integrations
 
 - Migrate domain
 - Emails (Portal, smtp)
