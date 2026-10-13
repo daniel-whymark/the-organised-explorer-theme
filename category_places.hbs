@@ -23,9 +23,9 @@
             <div class="gh-container-inner gh-inner">
                 <main class="gh-main">
                     <div class="gh-feed">
-                        {{#get "tags" limit="all" include="count.posts" order="name asc" filter="slug:~^'country-'"}}
+                        {{#get "tags" limit="all" include="count.posts" order="name asc" filter="slug:~^'place-'"}}
                             {{#foreach tags}}
-                                {{> "tag-card" title=name }}
+                                {{> "tag-card" title=name}}
                             {{/foreach}}
                         {{/get}}
 

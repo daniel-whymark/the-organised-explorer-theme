@@ -25,7 +25,7 @@
                     <div class="gh-feed">
                         {{#get "tags" limit="all" include="count.posts" order="name asc" filter="slug:~^'continent-'"}}
                             {{#foreach tags}}
-                                {{> "tag-card" title=name }}
+                                {{> "tag-card" title=name}}
                             {{/foreach}}
                         {{/get}}
 
