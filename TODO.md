@@ -16,3 +16,5 @@
 - Migrate domain
 - Connect stripe
 - Enable federation
+- Grid images sizing/orientation
+- 
