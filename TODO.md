@@ -1,6 +1,8 @@
 # TODO
 
 - Facebook posts to posts
+- Fix pagination
+- Articles+Socials collections (page template?) & nav links
 
 - Fish trail gallery test (take backup)
 - Review banner
