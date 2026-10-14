@@ -999,11 +999,11 @@ html.gh-navigation-open {
 }
 
 .gh-feed .gh-card-image img {
-    transition: all 250ms ease-in-out;
+    transition: transform 300ms ease-in-out;
 }
 
 .gh-feed .gh-card-image img:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .gh-card-wrapper {
