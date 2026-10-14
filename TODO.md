@@ -2,6 +2,8 @@
 
 - Facebook posts to posts
 - Fix pagination in Source theme
+- Reading progress (https://ghost.org/tutorials/reading-time/)
+- Review other tutorials
 
 - Fish trail gallery test (take backup)
 - Review banner
