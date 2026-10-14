@@ -20,7 +20,7 @@
         "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then git push --follow-tags; else echo \"Uncommitted changes found.\" && exit 1; fi",
         "postship": "git fetch && gulp release"
     },
-    "packageManager": "pnpm@12.4.2",
+    "packageManager": "pnpm@12.11.2",
     "author": {
         "name": "Daniel Whymark",
         "email": "hi@theorganisedexplorer.com",
@@ -49,7 +49,7 @@
         "@tryghost/theme-translations": "0.0.22",
         "autoprefixer": "10.6.1",
         "beeper": "2.1.0",
-        "cssnano": "9.0.5",
+        "cssnano": "9.6.0",
         "gscan": "6.6.1",
         "gulp": "5.0.1",
         "gulp-concat": "2.6.1",
@@ -57,7 +57,7 @@
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
         "gulp-zip": "6.1.0",
-        "inquirer": "14.2.2",
+        "inquirer": "14.2.3",
         "postcss": "8.5.28",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.4"
