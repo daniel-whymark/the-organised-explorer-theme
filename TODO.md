@@ -1,9 +1,7 @@
 # TODO
 
-- Fix index/archive filtering
 - Facebook posts to posts
-- Fix pagination
-- Articles+Socials collections (page template?) & nav links
+- Fix pagination in Source theme
 
 - Fish trail gallery test (take backup)
 - Review banner
