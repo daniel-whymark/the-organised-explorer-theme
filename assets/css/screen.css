@@ -3494,7 +3494,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
         --background-color: #262626 !important;
     }
 
-    /** {
+    * {
         --color-border: #80868b !important;
-    }*/
+    }
 }
