@@ -1,0 +1,35 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+{{#page}}
+
+    {{#match @page.show_title_and_feature_image}}
+        <header class="gh-article-header gh-canvas">
+            <h1 class="gh-article-title is-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+            {{/if}}
+            {{> "feature-image"}}
+        </header>
+    {{/match}}
+
+    <main class="gh-main">
+        <section class="gh-canvas gh-content is-body">
+            {{content}}
+        </section>
+
+        <div class="gmaps">
+            <iframe class="gmaps"
+                frameborder="0"
+                referrerpolicy="strict-origin-when-cross-origin"
+                src="https://www.google.com/maps/d/embed?mid=1yxOX-gFbslgkdwmywh2us0NV4ht5EO8&ehbc=2E312F&noprof=1&z=2">
+            </iframe>
+        </div>
+
+    </main>
+
+{{/page}}
+
+{{!-- <div style="position: relative; overflow: hidden; height: 0; padding-bottom: 75%;">
+style="border: none; position: absolute; top: -60px; left: 0; height: 100%; width: 100%"> --}}
+

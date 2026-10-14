@@ -1,5 +1,6 @@
 # TODO
 
+- Fix index/archive filtering
 - Facebook posts to posts
 - Fix pagination
 - Articles+Socials collections (page template?) & nav links
@@ -15,5 +16,5 @@
 - Add Supporter tier & new welcome email
 - Enable federation
 - Migrate members
-- Update map links (and add new)
+- Update map links to be Places (and add new)
 - Add recommendations
