@@ -3492,9 +3492,20 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #262626 !important;
+        --color-border: #b4623e !important;
+        --ghost-accent-color: #a0aa86 !important;
+
+        --brand-green: #a0aa86 !important;
+        --brand-brown: #b4623e !important;
+        --brand-beige: #c5b39a !important;
+
+        --logo-background-color: white !important;
     }
 
-    * {
-        --color-border: #80868b !important;
+    .gh-navigation-logo img,
+    .gh-footer-logo img {
+        border-radius: 8px;
+        border: 1px solid var(--logo-background-color);
+        background-color: var(--logo-background-color);
     }
 }
