@@ -2369,7 +2369,7 @@ unless a heading is the very first element in the post content */
 div.gmaps {
     max-width: 75%;
     height: 75vh;
-    margin: 0 auto 6vw;
+    margin: -75px auto 6vw;
     overflow: hidden;
 }
 
