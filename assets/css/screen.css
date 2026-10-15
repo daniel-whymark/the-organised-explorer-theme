@@ -33,6 +33,7 @@ production stylesheet in assets/built/screen.css
   14.1. Article
   14.2. Page template
   14.3. Page without header
+  14.4. Reading Progress
 15. Content
 16. Cards
 17. Comments
@@ -2186,6 +2187,35 @@ html.gh-navigation-open {
 
 .page-template .gh-footer {
     margin-top: 0;
+}
+
+/* 14.4. Reading Progress */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 6px;
+    border: none;
+    color: var(--ghost-accent-color);
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.reading-progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+    background: var(--ghost-accent-color);
+}
+
+.reading-progress::-moz-progress-bar {
+    background: var(--ghost-accent-color);
 }
 
 /* 15. Content
