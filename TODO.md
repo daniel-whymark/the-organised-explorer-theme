@@ -1,8 +1,7 @@
 # TODO
 
 - Fix pagination in Source theme
-- Reading progress (https://ghost.org/tutorials/reading-time/)
-- Review other tutorials
+- Table of Contents (https://ghost.org/tutorials/adding-table-of-contents/)
 
 - Fish trail gallery test (take backup)
 - Review banner
