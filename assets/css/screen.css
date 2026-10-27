@@ -1737,7 +1737,7 @@ html.gh-navigation-open {
 /* 11.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
@@ -2675,7 +2675,7 @@ figcaption a {
 }
 
 .gh-archive:not(.has-sidebar):not(.has-image) .gh-archive-inner {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-archive .gh-article-image {
