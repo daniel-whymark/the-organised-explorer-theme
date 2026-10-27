@@ -64,6 +64,7 @@
                             {{/foreach}}
                         {{/get}}
                     {{/match}}
+
                     {{#foreach posts}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
@@ -80,7 +81,7 @@
 
             {{#match pagination.pages ">" 1}}
                 <div class="gh-more is-title">
-                    <a href="{{@site.url}}/page/2/">{{t "See all"}} {{> "icons/arrow"}}</a>
+                    <a href="{{@site.url}}/articles/">{{t "See all articles"}} {{> "icons/arrow"}}</a>
                 </div>
             {{/match}}
         </main>
