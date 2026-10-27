@@ -2,7 +2,7 @@
 
 - Fix pagination in Source theme
 - Auto table of Contents (https://ghost.org/tutorials/adding-table-of-contents/)
-- Post image sizing
+- Re-upload low quality images
 
 - Fish trail gallery test (take backup)
 - Review banner
