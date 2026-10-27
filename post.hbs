@@ -1,6 +1,8 @@
 {{!< default}}
 {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
 
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
 {{#post}}
 
 <main class="gh-main">
@@ -9,9 +11,6 @@
 
         <header class="gh-article-header gh-canvas">
 
-            {{#if primary_tag}}
-                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
-            {{/if}}
             <h1 class="gh-article-title is-title">{{title}}</h1>
             {{#if custom_excerpt}}
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
@@ -24,7 +23,7 @@
                             {{#foreach authors}}
                                 {{#if profile_image}}
                                     <a href="{{url}}">
-                                        <img class="author-profile-image" src="{{img_url profile_image size="xs" format="webp"}}" alt="{{name}}">
+                                        <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
                                     </a>
                                 {{else}}
                                     <a href="{{url}}">{{> "icons/avatar"}}</a>
@@ -34,9 +33,12 @@
                         <div class="gh-article-meta-wrapper">
                             <h4 class="gh-article-author-name">{{authors}}</h4>
                             <div class="gh-article-meta-content">
-                                <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{#match @site.locale "~^" "en"}}{{date format="DD MMM YYYY"}}{{else}}{{date}}{{/match}}</time>
+                                <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="dddd do MMMM YYYY"}}</time>
                                 {{#if reading_time}}
-                                    <span class="gh-article-meta-length"><span class="bull">—</span> {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+                                    <br />
+                                    <span class="gh-article-meta-length">
+                                        {{reading_time minute=(t "Only a minute") minutes=(t "% minutes to read")}}
+                                    </span>
                                 {{/if}}
                             </div>
                         </div>
@@ -45,6 +47,24 @@
                         {{t "Share"}}
                     </a>
                 </div>
+
+                {{#if tags}}
+                    <div class="gh-article-tag-group">
+
+                        {{#if primary_tag}}
+                            <a class="gh-article-tag" href="{{primary_tag.url}}" title="{{primary_tag.name}} - {{primary_tag.description}}">{{primary_tag.name}}</a>
+                        {{/if}}
+
+                        {{#foreach tags from="2"}}
+                            {{#if description}}
+                                <a class="gh-article-tag" href="{{url}}" title="{{name}} - {{description}}">{{name}}</a>
+                            {{else}}
+                                <a class="gh-article-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+                            {{/if}}
+                        {{/foreach}}
+                    </div>
+                {{/if}}
+
             {{/if}}
 
             {{> "feature-image"}}
@@ -68,7 +88,7 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
+    {{#get "posts" include="authors" filter="tag:-socials + id:-{{post.id}}" limit="4" as |next|}}
         {{#if next}}
             <section class="gh-container is-grid gh-outer">
                 <div class="gh-container-inner gh-inner">

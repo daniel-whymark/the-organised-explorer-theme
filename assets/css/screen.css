@@ -33,6 +33,7 @@ production stylesheet in assets/built/screen.css
   14.1. Article
   14.2. Page template
   14.3. Page without header
+  14.4. Reading Progress
 15. Content
 16. Cards
 17. Comments
@@ -45,6 +46,7 @@ production stylesheet in assets/built/screen.css
   21.3. Footer signup
   21.4. Social links
 22. Lightbox
+23. Dark Mode
 
 */
 
@@ -70,6 +72,10 @@ production stylesheet in assets/built/screen.css
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
     --grid-gap: 42px;
+
+    --brand-green: #838e64;
+    --brand-brown: #8e4d31;
+    --brand-beige: #c5b39a;
 }
 
 :root.has-light-text,
@@ -89,7 +95,9 @@ production stylesheet in assets/built/screen.css
 /* 3. Resets
 /* ---------------------------------------------------------- */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -107,7 +115,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
     height: auto;
     max-width: 100%;
@@ -117,19 +129,34 @@ iframe {
     display: block;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
     font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     overflow-wrap: break-word;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     line-height: 1.2;
 }
 
-sub, sup {
+sub,
+sup {
     line-height: 1;
 }
 
@@ -143,7 +170,12 @@ body {
     color: var(--color-primary-text);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--gh-font-heading, var(--font-sans));
 }
 
@@ -175,6 +207,7 @@ a:hover {
 
 .gh-button:hover {
     opacity: 0.95;
+    background-color: var(--brand-beige);
 }
 
 .gh-icon-button {
@@ -248,14 +281,6 @@ a:hover {
     transition: 0.3s ease-in-out;
 }
 
-input.gh-form-input {
-    position: static;
-    flex: 1;
-    min-width: 0;
-    padding-inline-end: 16px;
-    text-overflow: ellipsis;
-}
-
 .gh-form-input::placeholder,
 button.gh-form-input {
     color: rgb(0 0 0 / 0.3);
@@ -299,16 +324,15 @@ button.gh-form-input {
     cursor: pointer;
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) button.gh-form-input,
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) button.gh-form-input,
 body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) button.gh-form-input,
 body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) button.gh-form-input {
     padding-inline-start: 50px;
 }
 
 .gh-form .gh-button {
-    position: relative;
-    flex-shrink: 0;
-    margin-inline-end: 6px;
+    position: absolute;
+    right: 6px;
     min-width: 132px;
     padding-inline: 24px;
     height: 44px;
@@ -323,7 +347,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     color: var(--color-secondary-text);
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form > svg {
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form > svg {
     left: 16px;
 }
 
@@ -561,9 +585,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     .gh-navigation-brand .gh-search {
         display: none;
     }
-}
 
-@media (min-width: 768px) and (scripting: enabled) {
     .gh-navigation:not(.is-dropdown-loaded) .gh-navigation-menu .nav > li {
         opacity: 0;
     }
@@ -684,7 +706,7 @@ Search                         LOGO                    Login Subscribe
         top: 80px;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: 2px;
         content: "";
         background-color: var(--color-border);
     }
@@ -720,9 +742,13 @@ Search                         LOGO                    Login Subscribe
     visibility: hidden;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 7px 20px -5px rgb(0 0 0 / 0.15);
+    box-shadow:
+        0 0 0 1px rgb(0 0 0 / 0.04),
+        0 7px 20px -5px rgb(0 0 0 / 0.15);
     opacity: 0;
-    transition: opacity 0.3s, transform 0.2s;
+    transition:
+        opacity 0.3s,
+        transform 0.2s;
     transform: translate3d(0, 6px, 0);
 }
 
@@ -903,7 +929,9 @@ html.gh-navigation-open {
 
     .is-open#gh-navigation .nav li {
         opacity: 1;
-        transition: transform 0.2s, opacity 0.2s;
+        transition:
+            transform 0.2s,
+            opacity 0.2s;
         transform: translateY(0);
     }
 
@@ -921,7 +949,9 @@ html.gh-navigation-open {
 
     .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
         opacity: 1;
-        transition: transform 0.4s, opacity 0.4s;
+        transition:
+            transform 0.4s,
+            opacity 0.4s;
         transition-delay: 0.2s;
         transform: translateY(0);
     }
@@ -940,42 +970,25 @@ html.gh-navigation-open {
 
 .gh-card {
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .gh-card-link {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    color: var(--color-darker-gray);
 }
 
-.gh-card-title-link {
-    color: inherit;
-}
-
-.gh-card-title-link:hover {
+.gh-card-link:hover {
     opacity: 1;
-}
-
-/* Stretch the title link over the whole card */
-.gh-card-title-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-}
-
-.gh-card-title-link:focus-visible {
-    outline: none;
-}
-
-.gh-card-title-link:focus-visible::after {
-    outline: auto;
 }
 
 .gh-card-image {
     position: relative;
     flex-shrink: 0;
     aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .gh-card-image img {
@@ -984,6 +997,14 @@ html.gh-navigation-open {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.gh-feed .gh-card-image img {
+    transition: transform 300ms ease-in-out;
+}
+
+.gh-feed .gh-card-image img:hover {
+    transform: scale(1.05);
 }
 
 .gh-card-wrapper {
@@ -1437,6 +1458,14 @@ html.gh-navigation-open {
     letter-spacing: -0.028em;
 }
 
+.gh-header.is-classic .gh-header-subtitle {
+    font-size: calc(clamp(1.8rem, 0.68vw + 1.53rem, 2.4rem) * var(--factor, 1));
+    line-height: 1.4;
+    letter-spacing: -0.014em;
+    font-weight: 450;
+    opacity: 0.75;
+}
+
 .gh-header.is-classic.has-image {
     margin-top: 0;
 }
@@ -1496,7 +1525,7 @@ html.gh-navigation-open {
 }
 
 .gh-cta-title {
-    font-size: clamp(2.8rem,1.36vw + 2.25rem,4rem);
+    font-size: clamp(2.8rem, 1.36vw + 2.25rem, 4rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.021em;
@@ -1540,7 +1569,7 @@ html.gh-navigation-open {
 
 .gh-featured-feed {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
 }
 
@@ -1708,7 +1737,7 @@ html.gh-navigation-open {
 /* 11.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
@@ -2043,6 +2072,15 @@ html.gh-navigation-open {
     color: var(--ghost-accent-color);
 }
 
+.gh-article-tag-group {
+    display: flex;
+    justify-content: left;
+    gap: 8px 14px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-top: 10px;
+}
+
 .gh-article-title {
     font-size: calc(clamp(3.4rem, 1.36vw + 2.85rem, 4.6rem) * var(--factor, 1));
     line-height: 1.1;
@@ -2126,7 +2164,9 @@ html.gh-navigation-open {
 }
 
 .gh-article-image img {
-    width: 100%;
+    height: 100%;
+    max-height: 360px;
+    margin: auto;
 }
 
 /* 14.2. Page template */
@@ -2147,6 +2187,35 @@ html.gh-navigation-open {
 
 .page-template .gh-footer {
     margin-top: 0;
+}
+
+/* 14.4. Reading Progress */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 6px;
+    border: none;
+    color: var(--ghost-accent-color);
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.reading-progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+    background: var(--ghost-accent-color);
+}
+
+.reading-progress::-moz-progress-bar {
+    background: var(--ghost-accent-color);
 }
 
 /* 15. Content
@@ -2180,9 +2249,9 @@ unless a heading is the very first element in the post content */
 
 /* Add drop cap setting */
 .post-template .gh-content.drop-cap > p:first-of-type:first-letter {
-    margin :0 0.2em 0em 0;
+    margin: 0 0.2em 0em 0;
     font-size: 3.1em;
-    float:left;
+    float: left;
     line-height: 1;
     margin-left: -1px;
     font-weight: 700;
@@ -2327,6 +2396,21 @@ unless a heading is the very first element in the post content */
     font-family: var(--font-mono);
 }
 
+div.gmaps {
+    max-width: 75%;
+    height: 75vh;
+    margin: -75px auto 6vw;
+    overflow: hidden;
+}
+
+iframe.gmaps {
+    width: 100%;
+    height: 100%;
+    border: none;
+    top: -60px;
+    position: relative;
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
@@ -2419,7 +2503,7 @@ blockquote.kg-blockquote-alt {
 
 .kg-card.kg-button-card .kg-btn {
     height: unset;
-    padding: .6em 1.2em;
+    padding: 0.6em 1.2em;
     text-align: center;
     font-size: 1em;
     line-height: 1.2em;
@@ -2591,7 +2675,7 @@ figcaption a {
 }
 
 .gh-archive:not(.has-sidebar):not(.has-image) .gh-archive-inner {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-archive .gh-article-image {
@@ -2713,15 +2797,15 @@ figcaption a {
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
     line-height: 1.15;
     letter-spacing: -0.006em;
-    font-size: calc(2.0rem*var(--factor, 1))
+    font-size: calc(2rem * var(--factor, 1));
 }
 
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
-    font-size: calc(1.6rem*var(--factor, 1))
+    font-size: calc(1.6rem * var(--factor, 1));
 }
 
 .has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
-    font-size: calc(1.5rem*var(--factor, 1));
+    font-size: calc(1.5rem * var(--factor, 1));
     letter-spacing: 0;
 }
 
@@ -2730,7 +2814,7 @@ figcaption a {
 }
 
 .has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
-    font-size: calc(1.8rem*var(--factor, 1));
+    font-size: calc(1.8rem * var(--factor, 1));
     line-height: 1.2;
 }
 
@@ -2762,10 +2846,10 @@ figcaption a {
     letter-spacing: -0.001em;
 }
 
-.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title,
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title,
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-highlight .gh-header-left .gh-card-title {
     font-weight: 550;
-    font-size: clamp(3.2rem,1.82vw + 2.47rem,4.9rem)
+    font-size: clamp(3.2rem, 1.82vw + 2.47rem, 4.9rem);
 }
 
 .has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-about-description {
@@ -2780,7 +2864,7 @@ figcaption a {
     letter-spacing: 0;
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button, .gh-form, .gh-form-input),
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button, .gh-form, .gh-form-input),
 body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) :is(.gh-button, .gh-form, .gh-form-input),
 body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) :is(.gh-button, .gh-form, .gh-form-input) {
     border-radius: 0;
@@ -2828,7 +2912,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-bottom: 120px;
     padding-block: 28px;
     font-weight: 550;
-    border-block: 1px solid var(--color-border);
+    border-block: 2px solid var(--color-border);
 }
 
 .gh-footer-logo {
@@ -2874,7 +2958,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-footer-signup-header {
-    font-size: calc(clamp(2.8rem,1.36vw + 2.25rem,4rem) * var(--factor, 1));
+    font-size: calc(clamp(2.8rem, 1.36vw + 2.25rem, 4rem) * var(--factor, 1));
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -3434,7 +3518,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .gh-button-share {
     display: inline-flex;
-    flex-shrink: 0;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 999px;
@@ -3442,9 +3525,32 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     background: transparent;
     cursor: pointer;
     transition: all 0.4s ease;
-    white-space: nowrap;
 }
 
 .gh-button-share:hover {
     border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 23. Dark Mode
+/* ---------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #262626 !important;
+        --color-border: #b4623e !important;
+        --ghost-accent-color: #a0aa86 !important;
+
+        --brand-green: #a0aa86 !important;
+        --brand-brown: #b4623e !important;
+        --brand-beige: #c5b39a !important;
+
+        --logo-background-color: white !important;
+    }
+
+    .gh-navigation-logo img,
+    .gh-footer-logo img {
+        border-radius: 8px;
+        border: 1px solid var(--logo-background-color);
+        background-color: var(--logo-background-color);
+    }
 }

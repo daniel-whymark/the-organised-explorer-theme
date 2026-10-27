@@ -16,6 +16,12 @@
         {{/if}}
 
         <div class="gh-social-links">
+            <a href="/rss/" target="_blank" rel="alternate" aria-label="RSS" type="application/rss+xml">
+                {{#> (concat "icons/rss" type)}}
+                    <span>{{name}}</span>
+                {{/undefined}}
+            </a>
+
             {{#social_accounts @site}}
                 <a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
                     {{#> (concat "icons/" type)}}
@@ -24,6 +30,12 @@
                     {{/undefined}}
                 </a>
             {{/social_accounts}}
+
+            <a href="https://uk.pinterest.com/theorganisedexplorer/" target="_blank" rel="noopener" aria-label="Pinterest">
+                {{#> (concat "icons/pinterest" type)}}
+                    <span>{{name}}</span>
+                {{/undefined}}
+            </a>
         </div>
 
         <div class="gh-footer-bar">
@@ -38,9 +50,22 @@
                 {{navigation type="secondary"}}
             </nav>
             <div class="gh-footer-copyright">
-                {{{t "Powered by {ghostlink}" ghostlink="<a href=\"https://ghost.org/\" target=\"_blank\" rel=\"noopener\">Ghost</a>"}}}
+                &copy; {{date format="YYYY"}} <a href="https://github.com/daniel-whymark/the-organised-explorer-theme" target="_blank" rel="noopener">The Organised Explorer</a>.
             </div>
         </div>
 
     </div>
+
+    {{!-- For debugging --}}
+    <p align="right" style="position: absolute; bottom: 0px; right: 0px; opacity: 0.25;">
+         <small>
+             <a
+                 href="/cdn-cgi/trace"
+                 tabindex="-1"
+                 aria-hidden="true"
+                 rel="noindex">
+                 &pi;
+             </a>
+         </small>
+     </p>
 </footer>
