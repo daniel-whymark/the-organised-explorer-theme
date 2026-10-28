@@ -2,6 +2,7 @@
 
 - Attempt merge of Magazine into Landing on Index
 - Auto table of Contents (https://ghost.org/tutorials/adding-table-of-contents/)
+- Randomise cover_image
 
 - Re-upload low quality images in recent posts
 - Check monopoly links
