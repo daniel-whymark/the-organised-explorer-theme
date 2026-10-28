@@ -1,6 +1,5 @@
 # TODO
 
-- Attempt merge of Magazine into Landing on Index
 - Auto table of Contents (https://ghost.org/tutorials/adding-table-of-contents/)
 - Randomise cover_image
 

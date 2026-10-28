@@ -158,13 +158,13 @@
                 "description": "Defaults to site description when empty",
                 "visibility": "header_style:[Landing, Search]"
             },
-            "background_image": {
-                "type": "boolean",
-                "default": true,
-                "description": "Use the publication cover set on the Brand tab as your background",
-                "group": "homepage",
-                "visibility": "header_style:[Landing, Search]"
-            },
+	    "show_extra_header": {
+        	"type": "boolean",
+       		"default": true,
+        	"description": "Show the Landing/Search header as an additional header.",
+        	"group": "homepage",
+        	"visibility": "header_style:[Magazine, Highlight]"
+      	    },
             "show_featured_posts": {
                 "type": "boolean",
                 "default": true,

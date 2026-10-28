@@ -23,7 +23,7 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
-                                {{#get "posts" include="authors" limit="16"}}
+                                {{#get "posts" include="authors" filter="tag:-socials" limit="16"}}
                                     {{#foreach posts from="5"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
@@ -31,7 +31,7 @@
                             {{/match}}
                         {{else}}
                             {{#match posts.length ">=" 10}}
-                                {{#get "posts" include="authors" limit="22"}}
+                                {{#get "posts" include="authors" filter="tag:-socials" limit="22"}}
                                     {{#foreach posts from="11"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
@@ -40,7 +40,7 @@
                         {{/if}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
-                            {{#get "posts" include="authors" limit="19"}}
+                            {{#get "posts" include="authors" filter="tag:-socials" limit="19"}}
                                 {{#foreach posts from="8"}}
                                     {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}

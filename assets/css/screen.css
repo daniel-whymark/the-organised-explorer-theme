@@ -711,6 +711,12 @@ Search                         LOGO                    Login Subscribe
         background-color: var(--color-border);
     }
 
+    .gh-border {
+        isolation: isolate;
+        border-block: 2px solid var(--color-border);
+        background-color: var(--color-border);
+    }
+
     .gh-navigation.is-stacked .gh-navigation-menu::after {
         top: 140px;
     }
