@@ -4,6 +4,10 @@ A fork of [Ghost](http://github.com/tryghost/ghost/)'s [Source](https://github.c
 
 Along with using the brand colour scheme, this theme also includes a few visual tweaks for a pleasant modern, yet minimal, experience.
 
+This theme also includes:
+- Customised Table Of Contents powered by [Tocbot](https://github.com/tscanlin/tocbot).
+- Additional SVG icons from [Font Awesome](https://fontawesome.com).
+
 &nbsp;
 
 # Development
