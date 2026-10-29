@@ -34,6 +34,7 @@ production stylesheet in assets/built/screen.css
   14.2. Page template
   14.3. Page without header
   14.4. Reading Progress
+  14.5. Table of Contents
 15. Content
 16. Cards
 17. Comments
@@ -2224,6 +2225,81 @@ html.gh-navigation-open {
     background: var(--ghost-accent-color);
 }
 
+/* 14.5. Table of Contents */
+.gh-toc > .toc-list {
+    position: relative;
+}
+
+.toc-list {
+    overflow: hidden;
+    list-style: none;
+}
+
+.gh-toc > :is(ul, ol, p) {
+    font-size: 0.95em;
+}
+
+.gh-toc .toc-link {
+    color: var(--ghost-accent-color);
+    text-decoration: none;
+}
+
+.gh-toc a.toc-link:hover {
+    color: var(--brand-beige);
+    opacity: 1;
+}
+
+.toc-title {
+    padding: 0 0 10px 28px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+@media (width < 1300px) {
+    .gh-toc .is-active-link::before {
+        background-color: transparent;
+    }
+
+    .gh-toc .is-active-link {
+        font-weight: inherit;
+    }
+
+    .gh-toc .toc-link::before {
+        background-color: transparent;
+    }
+}
+
+@media (width >= 1300px) {
+    .gh-toc > .toc-list {
+        padding-right: 28px;
+    }
+
+    .gh-sidebar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: 4vmin;
+        grid-column: full-start / wide-start;
+    }
+
+    .gh-toc-float {
+        position: sticky;
+        top: 4vmin;
+    }
+
+    .gh-toc .is-active-link::before {
+        background-color: var(--brand-brown);
+    }
+
+    .gh-toc .toc-link.is-active-link {
+        color: var(--brand-brown);
+    }
+
+    .toc-hr {
+        visibility: hidden;
+    }
+}
+
 /* 15. Content
 /* ---------------------------------------------------------- */
 
@@ -2234,6 +2310,7 @@ headings, text, images and lists. We deal with cards lower down. */
 .gh-content {
     font-size: var(--content-font-size, 1.7rem);
     letter-spacing: -0.01em;
+    position: relative;
 }
 
 /* Default vertical spacing */

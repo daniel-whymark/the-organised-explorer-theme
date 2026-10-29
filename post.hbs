@@ -72,6 +72,15 @@
         </header>
 
         <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+            <aside class="gh-sidebar">
+                <div class="gh-toc-float">
+                    <h4 class="toc-title kg-toggle-heading-text">In This Article</h3>
+                    <div class="gh-toc"></div>
+                </div>
+            </aside>
+
+            <hr class="toc-hr">
+
             {{content}}
         </section>
 
@@ -103,3 +112,18 @@
         {{/if}}
     {{/get}}
 {{/if}}
+
+<script src="{{asset "js/tocbot.js"}}"></script>
+<script>
+    tocbot.init({
+        tocSelector: ".gh-toc",
+        contentSelector: ".gh-content",
+        headingSelector: "h1, h2, h3, h4",
+        hasInnerContainers: true,
+        includeTitleTags: true,
+        ignoreSelector: ".toc-title",
+        collapseDepth: 1,
+        activeListItemClass: "is-active-link",
+        orderedList: false,
+    });
+</script>
