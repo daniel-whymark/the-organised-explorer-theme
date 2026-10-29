@@ -73,10 +73,12 @@
 
         <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
             <aside class="gh-sidebar">
-                <div class="gh-toc-float">
-                    <h4 class="toc-title kg-toggle-heading-text">In This Article</h3>
-                    <div class="gh-toc"></div>
-                </div>
+                {{#has tag="Articles"}}
+                    <div class="gh-toc-float">
+                        <h4 class="toc-title kg-toggle-heading-text">In This Article</h3>
+                        <div class="gh-toc"></div>
+                    </div>
+                {{/has}}
             </aside>
 
             <hr class="toc-hr">
