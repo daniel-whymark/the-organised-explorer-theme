@@ -934,7 +934,7 @@ html.gh-navigation-open {
 
 .gh-card {
     position: relative;
-    transition: all 0.3s ease;
+    border-radius: 12px;
 }
 
 .gh-card-link {
@@ -963,11 +963,11 @@ html.gh-navigation-open {
     object-fit: cover;
 }
 
-.gh-feed .gh-card-image img {
-    transition: transform 300ms ease-in-out;
+.gh-card img {
+    transition: transform 0.3s ease-in-out;
 }
 
-.gh-feed .gh-card-image img:hover {
+.gh-card:hover img {
     transform: scale(1.05);
 }
 
