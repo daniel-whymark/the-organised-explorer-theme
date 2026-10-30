@@ -371,7 +371,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 }
 
-
 :focus-visible {
     outline: solid var(--primary-color);
 }
@@ -870,7 +869,6 @@ html.gh-navigation-open {
         font-size: 1.75rem;
     }
 
-
     .is-open#gh-navigation {
         position: fixed;
         inset: 0;
@@ -925,7 +923,6 @@ html.gh-navigation-open {
     .is-open#gh-navigation a[data-portal="signin"] {
         transition-delay: 0.4s;
     }
-
 }
 
 /* 7. Card
@@ -1468,6 +1465,7 @@ html.gh-navigation-open {
 .gh-cta {
     display: none;
     margin-top: max(4vw, 40px);
+    padding-inline: 0;
 }
 
 .gh-header:is(.is-highlight, .is-magazine) + .gh-cta {
@@ -1484,6 +1482,7 @@ html.gh-navigation-open {
     padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px);
     text-align: center;
     background-color: var(--color-lighter-gray);
+    max-width: none;
 }
 
 .gh-cta-content {
@@ -2927,10 +2926,15 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-top: 120px;
     font-size: 1.5rem;
     color: var(--color-darker-gray);
+    padding: 0;
 }
 
 .gh-footer a:not(.gh-button) {
     color: inherit;
+}
+
+.gh-footer-inner {
+    max-width: none;
 }
 
 /* 21.1. Footer bar */
@@ -2944,6 +2948,8 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     padding-block: 28px;
     font-weight: 550;
     border-block: var(--border-size) solid var(--color-border);
+    max-width: none;
+    padding-inline: max(0px, calc((100% - var(--container-width)) / 2));
 }
 
 .gh-footer-logo {
