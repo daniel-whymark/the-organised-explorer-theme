@@ -10,10 +10,9 @@ production stylesheet in assets/built/screen.css
 4. Globals
 5. Layout
 6. Navigation
-  6.1. Navigation styles
-  6.2. Navigation layouts
-  6.3. Dropdown menu
-  6.4. Mobile menu
+  6.1. Navigation layouts
+  6.2. Dropdown menu
+  6.3. Mobile menu
 7. Card
 8. Header
   8.1. Magazine layout
@@ -42,10 +41,9 @@ production stylesheet in assets/built/screen.css
 19. Archive
 20. Design settings
 21. Footer
-  21.1. Footer styles
-  21.2. Footer bar
-  21.3. Footer signup
-  21.4. Social links
+  21.1. Footer bar
+  21.2. Footer signup
+  21.3. Social links
 22. Lightbox
 23. Dark Mode
 
@@ -55,17 +53,19 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 
 :root {
-    --color-white: #fff;
+    --background-color: var(--site-background-color);
+    --primary-color: var(--site-primary-color);
+    --secondary-color: var(--site-secondary-color);
+    --tertiary-color: var(--site-tertiary-color);
+
+    --color-border: var(--secondary-color);
+    --logo-background-color: white;
     --color-lighter-gray: rgb(0 0 0 / 0.05);
     --color-light-gray: #e6e6e6;
-    --color-mid-gray: #ccc;
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
-    --color-black: #000;
     --color-primary-text: var(--color-darker-gray);
     --color-secondary-text: rgb(0 0 0 / 0.55);
-    --color-border: rgb(0 0 0 / 0.08);
-    --color-dark-border: rgb(0 0 0 / 0.55);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -73,19 +73,7 @@ production stylesheet in assets/built/screen.css
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
     --grid-gap: 42px;
-
-    --brand-green: #838e64;
-    --brand-brown: #8e4d31;
-    --brand-beige: #c5b39a;
-}
-
-:root.has-light-text,
-:is(.gh-navigation, .gh-footer).has-accent-color {
-    --color-lighter-gray: rgb(255 255 255 / 0.1);
-    --color-darker-gray: #fff;
-    --color-secondary-text: rgb(255 255 255 / 0.64);
-    --color-border: rgb(255 255 255 / 0.15);
-    --color-dark-border: rgb(255 255 255 / 0.5);
+    --border-size: 2px;
 }
 
 /* 2. Fonts
@@ -199,16 +187,16 @@ a:hover {
     font-weight: 600;
     letter-spacing: -0.004em;
     line-height: 1;
-    color: var(--color-white);
+    color: white;
     cursor: pointer;
-    background-color: var(--ghost-accent-color);
+    background-color: var(--primary-color);
     border: 0;
     border-radius: 100px;
 }
 
 .gh-button:hover {
     opacity: 0.95;
-    background-color: var(--brand-beige);
+    background-color: var(--tertiary-color);
 }
 
 .gh-icon-button {
@@ -261,11 +249,6 @@ a:hover {
     background-color: rgb(0 0 0 / 0.065);
 }
 
-.has-light-text .gh-form:hover,
-.gh-footer.has-accent-color .gh-form:hover {
-    background-color: rgb(255 255 255 / 0.15);
-}
-
 .gh-form-input {
     position: absolute;
     inset: 0;
@@ -295,17 +278,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .gh-form.gh-form.success .gh-form-input {
     opacity: 0.5;
-}
-
-.has-light-text .gh-form-input,
-.gh-footer.has-accent-color .gh-form-input {
-    color: #fff;
-}
-
-.has-light-text .gh-form-input::placeholder,
-.has-light-text button.gh-form-input,
-.gh-footer.has-accent-color .gh-form-input::placeholder {
-    color: rgb(255 255 255 / 0.55);
 }
 
 .gh-header.is-classic.has-image .gh-form-input {
@@ -545,10 +517,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     background-color: var(--background-color);
 }
 
-.gh-navigation.has-accent-color .gh-navigation-actions {
-    background-color: var(--ghost-accent-color);
-}
-
 .gh-navigation-members {
     display: flex;
     gap: 20px;
@@ -592,18 +560,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 }
 
-/* 6.1. Navigation styles */
-
-.gh-navigation.has-accent-color {
-    background-color: var(--ghost-accent-color);
-}
-
-.gh-navigation.has-accent-color .gh-button {
-    background-color: #fff;
-    color: #15171a;
-}
-
-/* 6.2. Navigation layouts */
+/* 6.1. Navigation layouts */
 
 /*
 ======================================================================
@@ -714,7 +671,7 @@ Search                         LOGO                    Login Subscribe
 
     .gh-border {
         isolation: isolate;
-        border-block: 2px solid var(--color-border);
+        border-block: var(--border-size) solid var(--color-border);
         background-color: var(--color-border);
     }
 
@@ -735,7 +692,7 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-/* 6.3. Dropdown menu */
+/* 6.2. Dropdown menu */
 
 .gh-dropdown {
     position: absolute;
@@ -747,7 +704,7 @@ Search                         LOGO                    Login Subscribe
     margin-top: 24px;
     text-align: left;
     visibility: hidden;
-    background-color: #fff;
+    background-color: white;
     border-radius: 5px;
     box-shadow:
         0 0 0 1px rgb(0 0 0 / 0.04),
@@ -791,7 +748,7 @@ Search                         LOGO                    Login Subscribe
     padding: 8px 0;
 }
 
-/* 6.4. Mobile menu */
+/* 6.3. Mobile menu */
 
 html.gh-navigation-open {
     overflow: hidden;
@@ -1162,7 +1119,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1178,7 +1135,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1219,7 +1176,7 @@ html.gh-navigation-open {
         left: 0;
         content: "";
         width: 100%;
-        height: 1px;
+        height: var(--border-size);
         background-color: var(--color-border);
     }
 
@@ -1232,7 +1189,7 @@ html.gh-navigation-open {
         top: 0;
         right: calc(var(--grid-gap) / -2);
         content: "";
-        width: 1px;
+        width: var(--border-size);
         height: 100%;
         background-color: var(--color-border);
     }
@@ -1266,7 +1223,7 @@ html.gh-navigation-open {
         left: 0;
         content: "";
         width: 100%;
-        height: 1px;
+        height: var(--border-size);
         background-color: var(--color-border);
     }
 }
@@ -1358,7 +1315,7 @@ html.gh-navigation-open {
     top: 0;
     right: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1369,7 +1326,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1408,7 +1365,7 @@ html.gh-navigation-open {
         top: 0;
         left: calc(var(--grid-gap) / -2);
         content: "";
-        width: 1px;
+        width: var(--border-size);
         height: 100%;
         background-color: var(--color-border);
     }
@@ -1481,13 +1438,17 @@ html.gh-navigation-open {
     position: absolute;
     inset: 0;
     content: "";
-    opacity: 0.3;
-    background-color: var(--color-black);
-    transition: opacity 1.5s ease;
+    opacity: 0;
+    background-color: black;
+    transition: opacity 3s ease-in;
+
+    @starting-style {
+        opacity: 0.5;
+    }
 }
 
 .gh-header.is-classic.has-image .gh-header-inner {
-    color: #fff;
+    color: white;
 }
 
 .gh-header.is-classic.has-image .gh-header-image {
@@ -1500,7 +1461,7 @@ html.gh-navigation-open {
 }
 
 .gh-header.is-classic.has-image .gh-form {
-    background-color: #fff;
+    background-color: white;
 }
 
 /* 9. CTA
@@ -1571,7 +1532,7 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-featured-feed {
@@ -1638,7 +1599,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1736,7 +1697,7 @@ html.gh-navigation-open {
     top: 0;
     right: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1777,7 +1738,7 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-container:not(:has(.gh-card)) .gh-container-title {
@@ -1845,7 +1806,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1879,7 +1840,7 @@ html.gh-navigation-open {
     right: calc(var(--grid-gap) / -2);
     left: calc(var(--grid-gap) / -2);
     content: "";
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1888,7 +1849,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1928,7 +1889,7 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-about {
@@ -2076,7 +2037,7 @@ html.gh-navigation-open {
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
 }
 
 .gh-article-tag-group {
@@ -2206,7 +2167,7 @@ html.gh-navigation-open {
     width: 100%;
     height: 6px;
     border: none;
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     background-color: transparent;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -2218,11 +2179,11 @@ html.gh-navigation-open {
 }
 
 .reading-progress::-webkit-progress-value {
-    background: var(--ghost-accent-color);
+    background: var(--primary-color);
 }
 
 .reading-progress::-moz-progress-bar {
-    background: var(--ghost-accent-color);
+    background: var(--primary-color);
 }
 
 /* 14.5. Table of Contents */
@@ -2240,12 +2201,12 @@ html.gh-navigation-open {
 }
 
 .gh-toc .toc-link {
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 .gh-toc a.toc-link:hover {
-    color: var(--brand-beige);
+    color: var(--tertiary-color);
     opacity: 1;
 }
 
@@ -2288,11 +2249,11 @@ html.gh-navigation-open {
     }
 
     .gh-toc .is-active-link::before {
-        background-color: var(--brand-brown);
+        background-color: var(--secondary-color);
     }
 
     .gh-toc .toc-link.is-active-link {
-        color: var(--brand-brown);
+        color: var(--secondary-color);
     }
 
     .toc-hr {
@@ -2376,7 +2337,7 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content a {
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -2415,7 +2376,7 @@ unless a heading is the very first element in the post content */
 
 .gh-content hr {
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
     border: 0;
 }
@@ -2438,7 +2399,7 @@ unless a heading is the very first element in the post content */
 .gh-content .gh-table table th {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--color-darkgrey);
+    color: var(--color-dark-gray);
     text-align: left;
     text-transform: uppercase;
     letter-spacing: 0.2px;
@@ -2447,7 +2408,7 @@ unless a heading is the very first element in the post content */
 .gh-content .gh-table table :is(th, td),
 .gh-content .gh-table table td {
     padding: 6px 12px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-content .gh-table table :is(th, td):first-child {
@@ -2573,7 +2534,7 @@ iframe.gmaps {
 
 blockquote:not([class]) {
     padding-left: 2rem;
-    border-left: 4px solid var(--ghost-accent-color);
+    border-left: 4px solid var(--primary-color);
 }
 
 blockquote.kg-blockquote-alt {
@@ -2699,7 +2660,7 @@ figcaption {
 }
 
 figcaption a {
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -2749,7 +2710,7 @@ figcaption a {
     gap: var(--grid-gap);
     grid-column: 1 / -1;
     padding-bottom: clamp(40px, 2.73vw + 29.09px, 64px);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-archive.has-image .gh-archive-inner {
@@ -2970,22 +2931,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     color: inherit;
 }
 
-/* 21.1 Footer styles */
-
-.gh-footer.has-accent-color {
-    background-color: var(--ghost-accent-color);
-}
-
-.gh-footer.has-accent-color .gh-footer-bar {
-    border-top: 0;
-}
-
-.gh-footer.has-accent-color .gh-button {
-    background-color: #fff;
-    color: #15171a;
-}
-
-/* 21.2. Footer bar */
+/* 21.1. Footer bar */
 
 .gh-footer-bar {
     display: grid;
@@ -2995,7 +2941,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-bottom: 120px;
     padding-block: 28px;
     font-weight: 550;
-    border-block: 2px solid var(--color-border);
+    border-block: var(--border-size) solid var(--color-border);
 }
 
 .gh-footer-logo {
@@ -3030,7 +2976,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     text-decoration: underline;
 }
 
-/* 21.3. Footer signup */
+/* 21.2. Footer signup */
 
 .gh-footer-signup {
     display: flex;
@@ -3068,7 +3014,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 }
 
-/* 21.4. Social links */
+/* 21.3. Social links */
 
 .gh-social-links {
     display: flex;
@@ -3206,7 +3152,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .pswp__img--placeholder--blank {
-    background: var(--color-black);
+    background: black;
 }
 
 .pswp--ie .pswp__img {
@@ -3375,7 +3321,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     font-size: 11px;
     font-weight: 700;
     line-height: 44px;
-    color: var(--color-white);
+    color: white;
     user-select: none;
 }
 
@@ -3393,7 +3339,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin: 0 auto;
     font-size: 11px;
     line-height: 1.6;
-    color: var(--color-white);
+    color: white;
     text-align: center;
 }
 
@@ -3483,7 +3429,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     height: 14px;
     margin: 0;
     background: none;
-    border: 2px solid var(--color-white);
+    border: 2px solid white;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-radius: 50%;
@@ -3590,15 +3536,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-top: 20px;
 }
 
-.has-light-text .gh-button-share {
-    border-color: rgba(255, 255, 255, 0.25);
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.has-light-text .gh-button-share:hover {
-    border-color: rgba(255, 255, 255, 0.85);
-}
-
 .gh-button-share {
     display: inline-flex;
     align-items: center;
@@ -3619,15 +3556,32 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color: #262626 !important;
-        --color-border: #b4623e !important;
-        --ghost-accent-color: #a0aa86 !important;
+        --background-color: #121212;
+        --color-lighter-gray: rgb(255 255 255 / 0.1);
+        --color-darker-gray: white;
+        --color-secondary-text: rgb(255 255 255 / 0.64);
+    }
 
-        --brand-green: #a0aa86 !important;
-        --brand-brown: #b4623e !important;
-        --brand-beige: #c5b39a !important;
+    .gh-form:hover {
+        background-color: rgb(255 255 255 / 0.15);
+    }
 
-        --logo-background-color: white !important;
+    .gh-form-input {
+        color: white;
+    }
+
+    .gh-form-input::placeholder,
+    button.gh-form-input {
+        color: rgb(255 255 255 / 0.55);
+    }
+
+    .gh-button-share {
+        border-color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .gh-button-share:hover {
+        border-color: rgba(255, 255, 255, 0.85);
     }
 
     .gh-navigation-logo img,
