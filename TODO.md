@@ -2,9 +2,7 @@
 
 - Randomise cover_image
 - Re-upload low quality images in recent posts
-- Check monopoly links
 - Fish trail gallery test (take backup)
-- card hover shadow
 
 - Review banner
 - Review available integrations
