@@ -7,6 +7,7 @@
 
 - Review banner
 - Review available integrations
+- Review [Citation Needed](https://www.citationneeded.news/substack-to-self-hosted-ghost/) for any overlooked steps
 
 - Migrate domain
 - Emails (Portal, smtp)
