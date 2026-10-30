@@ -371,6 +371,11 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 }
 
+
+:focus-visible {
+    outline: solid var(--primary-color);
+}
+
 /* 5. Layout
 /* ---------------------------------------------------------- */
 
@@ -764,7 +769,6 @@ html.gh-navigation-open {
 }
 
 .gh-burger {
-    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -866,9 +870,6 @@ html.gh-navigation-open {
         font-size: 1.75rem;
     }
 
-    #gh-main {
-        transition: opacity 0.4s;
-    }
 
     .is-open#gh-navigation {
         position: fixed;
@@ -925,9 +926,6 @@ html.gh-navigation-open {
         transition-delay: 0.4s;
     }
 
-    .is-open#gh-main {
-        opacity: 0;
-    }
 }
 
 /* 7. Card
@@ -935,7 +933,6 @@ html.gh-navigation-open {
 
 .gh-card {
     position: relative;
-    border-radius: 12px;
 }
 
 .gh-card-link {
@@ -1444,7 +1441,7 @@ html.gh-navigation-open {
     transition: opacity 3s ease-in;
 
     @starting-style {
-        opacity: 0.5;
+        opacity: 0.3;
     }
 }
 
@@ -2236,7 +2233,7 @@ html.gh-navigation-open {
         padding-right: 28px;
     }
 
-    .gh-sidebar {
+    .post-template .gh-content > .gh-sidebar {
         position: absolute;
         top: 0;
         bottom: 0;

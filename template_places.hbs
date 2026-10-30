@@ -18,7 +18,7 @@
             {{content}}
         </section>
 
-        <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
+        <section class="gh-container is-{{#match @custom.post_feed_style "List"}}list{{else}}grid{{/match}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
             <div class="gh-container-inner gh-inner">
                 <div class="gh-main">
                     <div class="gh-feed">
