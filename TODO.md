@@ -1,6 +1,7 @@
 # TODO
 
 - Randomise cover_image
+- BG colors for header/footer/cta, with matching text colors
 - Re-upload low quality images in recent posts
 - Fish trail gallery test (take backup)
 
