@@ -46,6 +46,7 @@ production stylesheet in assets/built/screen.css
   21.3. Social links
 22. Lightbox
 23. Dark Mode
+24. Reduced Motion
 
 */
 
@@ -3589,5 +3590,22 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
         border-radius: 8px;
         border: 1px solid var(--logo-background-color);
         background-color: var(--logo-background-color);
+    }
+}
+
+/* 24. Reduced Motion
+/* ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .gh-header.is-classic.has-image::before {
+        transition: none;
+    }
+
+    .gh-card img {
+        transition: none;
+    }
+
+    .gh-card:hover img {
+        transform: none;
     }
 }
