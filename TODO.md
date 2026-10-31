@@ -4,10 +4,12 @@
 - BG colors for header/footer/cta, with matching text colors
 - Re-upload low quality images in recent posts
 - Fish trail gallery test (take backup)
+- Page with (Google) Form for feedback
+- Buffer for posts
 
 - Review banner
-- Review available integrations
 - Review [Citation Needed](https://www.citationneeded.news/substack-to-self-hosted-ghost/) for any overlooked steps
+
 
 - Migrate domain
 - Emails (Portal, smtp)
