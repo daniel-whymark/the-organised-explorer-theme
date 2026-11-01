@@ -6,10 +6,8 @@
 
 
 ## Posts
-- Re-upload low quality images in recent posts
 - Fish trail gallery test (take backup)
 - Some titles are too long for TOC
-- Image credit captions
 - Image alt text
 
 
