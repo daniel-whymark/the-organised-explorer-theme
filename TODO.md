@@ -23,6 +23,6 @@
 
 ## Migration
 - Connect stripe
-- Add Supporter tier
+- Add Supporter tier (nice example: https://martinrobbins.substack.com/about)
 - Review welcome emails
 - Add recommendations
