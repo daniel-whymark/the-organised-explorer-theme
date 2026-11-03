@@ -7,8 +7,8 @@
 
 ## Posts
 - Fish trail gallery test (take backup)
-- Some titles are too long for TOC
 - Image alt text
+- Update google map links to be Places (and add new)
 
 
 ## Integrations
@@ -25,5 +25,4 @@
 - Connect stripe
 - Add Supporter tier
 - Review welcome emails
-- Update map links to be Places (and add new)
 - Add recommendations
