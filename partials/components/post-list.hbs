@@ -23,7 +23,7 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
-                                {{#get "posts" include="authors" filter="tag:-socials" limit="16"}}
+                                {{#get "posts" include="authors" limit="16"}}
                                     {{#foreach posts from="5"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
@@ -81,7 +81,7 @@
 
             {{#match pagination.pages ">" 1}}
                 <div class="gh-more is-title">
-                    <a href="{{@site.url}}/page/2/">{{t "See all articles"}} {{> "icons/arrow"}}</a>
+                    <a href="{{@site.url}}/page/2/">{{t "See all content"}} {{> "icons/arrow"}}</a>
                 </div>
             {{/match}}
         </main>
