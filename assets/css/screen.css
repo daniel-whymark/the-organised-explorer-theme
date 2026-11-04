@@ -469,7 +469,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-navigation-logo img {
-    max-height: 40px;
+    max-height: 60px;
 }
 
 .gh-navigation-menu {
@@ -2966,7 +2966,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-footer-logo img {
-    max-height: 40px;
+    max-height: 60px;
 }
 
 .gh-footer-menu .nav {
