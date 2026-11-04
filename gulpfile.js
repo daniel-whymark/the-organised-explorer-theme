@@ -85,7 +85,7 @@ function zipper(done) {
             '!AGENTS.md',
             '!CLAUDE.md',
             '!gulpfile.js'
-        ]),
+        ], {encoding: false}),
         zip(filename),
         dest('dist/')
     ], handleError(done));
