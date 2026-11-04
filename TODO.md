@@ -1,10 +1,5 @@
 # TODO
 
-## Design
-- BG colors for header/footer/cta, with matching text colors
-- Review banner
-
-
 ## Posts
 - Fish trail gallery test (take backup)
 - Image alt text
