@@ -26,3 +26,4 @@
 - Add Supporter tier (nice example: https://martinrobbins.substack.com/about)
 - Review welcome emails
 - Add recommendations
+- Analytics being blocked (404 - https://dash.cloudflare.com/eebcd62e6b28ec7174f99742f6a9869b/observability/logs?z=fe90393c7055030e798d6944c5209cd3&q=edgeResponseStatus+%3E%3D+400)
