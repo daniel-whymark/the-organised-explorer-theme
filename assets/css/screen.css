@@ -930,6 +930,7 @@ html.gh-navigation-open {
 
 .gh-card {
     position: relative;
+    border-radius: 12px;
 }
 
 .gh-card-link {
@@ -948,6 +949,8 @@ html.gh-navigation-open {
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 12px;
+    border: 1px solid var(--color-lighter-gray);
+    box-shadow: 1px 1px 5px var(--color-lighter-gray)
 }
 
 .gh-card-image img {
@@ -2325,16 +2328,19 @@ unless a heading is the very first element in the post content */
 .gh-content h1 {
     font-size: calc(2.2em * var(--factor, 1));
     letter-spacing: -0.02em;
+    text-decoration: underline;
 }
 
 .gh-content h2 {
     font-size: calc(1.6em * var(--factor, 1));
     letter-spacing: -0.02em;
+    text-decoration: underline;
 }
 
 .gh-content h3 {
     font-size: calc(1.3em * var(--factor, 1));
     letter-spacing: -0.017em;
+    text-decoration: underline;
 }
 
 .gh-content a {
