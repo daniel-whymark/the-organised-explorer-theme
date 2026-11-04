@@ -191,8 +191,9 @@ a:hover {
     color: white;
     cursor: pointer;
     background-color: var(--primary-color);
-    border: 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);;
     border-radius: 100px;
+    transition: all 0.4s ease;
 }
 
 .gh-button:hover {
@@ -3550,21 +3551,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-top: 20px;
 }
 
-.gh-button-share {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 999px;
-    color: rgba(0, 0, 0, 0.85);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.gh-button-share:hover {
-    border-color: rgba(0, 0, 0, 0.5);
-}
-
 /* 23. Dark Mode
 /* ---------------------------------------------------------- */
 
@@ -3587,15 +3573,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     .gh-form-input::placeholder,
     button.gh-form-input {
         color: rgb(255 255 255 / 0.55);
-    }
-
-    .gh-button-share {
-        border-color: rgba(255, 255, 255, 0.25);
-        color: rgba(255, 255, 255, 0.85);
-    }
-
-    .gh-button-share:hover {
-        border-color: rgba(255, 255, 255, 0.85);
     }
 
     .gh-navigation-logo img,
