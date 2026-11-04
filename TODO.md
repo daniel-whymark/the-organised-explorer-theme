@@ -9,7 +9,7 @@
 - Fish trail gallery test (take backup)
 - Image alt text
 - Update google map links to be Places (and add new)
-
+- Confirm Beehiiv migration (check bookmarks are not embeds etc) 
 
 ## Integrations
 - Buffer for posts
