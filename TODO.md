@@ -1,19 +1,23 @@
 # TODO
 
-- Auto table of Contents (https://ghost.org/tutorials/adding-table-of-contents/)
+## Posts
+- Refactor Hull Fish trail
+- Image alt text
+- Update google map links to be Places (and add new)
 
-- Re-upload low quality images in recent posts
-- Check monopoly links
-- Fish trail gallery test (take backup)
-- Review banner
-- Review available integrations
 
-- Migrate domain
-- Emails (Portal, smtp)
-- Update Mailgun
+## Integrations
+- Buffer for posts
+- Page with Google Form for contact/feedback
+
+
+## Other
+- Randomise cover_image
+- Review [Citation Needed](https://www.citationneeded.news/substack-to-self-hosted-ghost/) for any overlooked steps
+
+
+## Migration
 - Connect stripe
-- Add Supporter tier & new welcome email
-- Enable federation
-- Migrate members
-- Update map links to be Places (and add new)
+- Add Supporter tier (nice example: https://martinrobbins.substack.com/about)
+- Review welcome emails
 - Add recommendations

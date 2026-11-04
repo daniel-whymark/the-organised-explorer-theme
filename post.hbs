@@ -16,62 +16,72 @@
                 <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
             {{/if}}
 
-            {{#if @custom.show_post_metadata}}
-                <div class="gh-meta-share">
-                    <div class="gh-article-meta">
-                        <div class="gh-article-author-image instapaper_ignore">
-                            {{#foreach authors}}
-                                {{#if profile_image}}
-                                    <a href="{{url}}">
-                                        <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
-                                    </a>
-                                {{else}}
-                                    <a href="{{url}}">{{> "icons/avatar"}}</a>
-                                {{/if}}
-                            {{/foreach}}
-                        </div>
-                        <div class="gh-article-meta-wrapper">
-                            <h4 class="gh-article-author-name">{{authors}}</h4>
-                            <div class="gh-article-meta-content">
-                                <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="dddd do MMMM YYYY"}}</time>
-                                {{#if reading_time}}
-                                    <br />
-                                    <span class="gh-article-meta-length">
-                                        {{reading_time minute=(t "Only a minute") minutes=(t "% minutes to read")}}
-                                    </span>
-                                {{/if}}
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#/share" class="gh-button gh-button-share">
-                        {{t "Share"}}
-                    </a>
-                </div>
-
-                {{#if tags}}
-                    <div class="gh-article-tag-group">
-
-                        {{#if primary_tag}}
-                            <a class="gh-article-tag" href="{{primary_tag.url}}" title="{{primary_tag.name}} - {{primary_tag.description}}">{{primary_tag.name}}</a>
-                        {{/if}}
-
-                        {{#foreach tags from="2"}}
-                            {{#if description}}
-                                <a class="gh-article-tag" href="{{url}}" title="{{name}} - {{description}}">{{name}}</a>
+            <div class="gh-meta-share">
+                <div class="gh-article-meta">
+                    <div class="gh-article-author-image instapaper_ignore">
+                        {{#foreach authors}}
+                            {{#if profile_image}}
+                                <a href="{{url}}">
+                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+                                </a>
                             {{else}}
-                                <a class="gh-article-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+                                <a href="{{url}}">{{> "icons/avatar"}}</a>
                             {{/if}}
                         {{/foreach}}
                     </div>
-                {{/if}}
+                    <div class="gh-article-meta-wrapper">
+                        <h4 class="gh-article-author-name">{{authors}}</h4>
+                        <div class="gh-article-meta-content">
+                            <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="dddd Do MMMM YYYY"}}</time>
+                            {{#if reading_time}}
+                                <br />
+                                <span class="gh-article-meta-length">
+                                    {{reading_time minute=(t "Only a minute") minutes=(t "% minutes to read")}}
+                                </span>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <a href="#/share" class="gh-button gh-button-share">
+                    {{t "Share"}}
+                </a>
+            </div>
 
+            {{#if tags}}
+                <div class="gh-article-tag-group">
+
+                    {{#if primary_tag}}
+                        <a class="gh-article-tag" href="{{primary_tag.url}}" title="{{primary_tag.name}} - {{primary_tag.description}}">{{primary_tag.name}}</a>
+                    {{/if}}
+
+                    {{#foreach tags from="2"}}
+                        {{#if description}}
+                            <a class="gh-article-tag" href="{{url}}" title="{{name}} - {{description}}">{{name}}</a>
+                        {{else}}
+                            <a class="gh-article-tag" href="{{url}}" title="{{name}}">{{name}}</a>
+                        {{/if}}
+                    {{/foreach}}
+                </div>
             {{/if}}
 
-            {{> "feature-image"}}
+            {{#has tag="Articles"}}
+                {{> "feature-image"}}
+            {{/has}}
 
         </header>
 
         <section class="gh-content gh-canvas is-body{{#if @custom.enable_drop_caps_on_posts}} drop-cap{{/if}}">
+            <aside class="gh-sidebar">
+                {{#has tag="Articles"}}
+                    <div class="gh-toc-float">
+                        <h4 class="toc-title kg-toggle-heading-text">In This Article</h4>
+                        <div class="gh-toc"></div>
+                    </div>
+                {{/has}}
+            </aside>
+
+            <hr class="toc-hr">
+
             {{content}}
         </section>
 
@@ -88,7 +98,7 @@
 {{/post}}
 
 {{#if @custom.show_related_articles}}
-    {{#get "posts" include="authors" filter="tag:-socials + id:-{{post.id}}" limit="4" as |next|}}
+    {{#get "posts" include="authors" filter="id:-{{post.id}}" limit="4" as |next|}}
         {{#if next}}
             <section class="gh-container is-grid gh-outer" data-nosnippet>
                 <div class="gh-container-inner gh-inner">
@@ -103,3 +113,18 @@
         {{/if}}
     {{/get}}
 {{/if}}
+
+<script src="{{asset "js/tocbot.js"}}"></script>
+<script>
+    tocbot.init({
+        tocSelector: ".gh-toc",
+        contentSelector: ".gh-content",
+        headingSelector: "h1, h2, h3, h4",
+        hasInnerContainers: true,
+        includeTitleTags: true,
+        ignoreSelector: ".toc-title",
+        collapseDepth: 1,
+        activeListItemClass: "is-active-link",
+        orderedList: false,
+    });
+</script>

@@ -6,11 +6,17 @@
     <title>{{meta_title page=(t " (Page %)")}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
-    
+
+    {{#is "post"}}
+        {{!-- Preload Tocbot --}}
+        <link rel="preload" as="style" href="{{asset "css/tocbot.css"}}">
+        <link rel="preload" as="script" href="{{asset "js/tocbot.js"}}">
+    {{/is}}
+
     {{!-- Fonts are preloaded and defined in the default template to avoid layout shift --}}
     {{> "typography/fonts"}}
 
@@ -20,32 +26,17 @@
     {{!-- Custom background color --}}
     <style>
         :root {
-            --background-color: {{@custom.site_background_color}}
-        }
-    
-        * {
-          --color-border: {{@custom.site_border_color}}
+            --site-background-color: {{@custom.site_background_color}};
+            --site-primary-color: {{@custom.site_primary_color}};
+            --site-secondary-color: {{@custom.site_secondary_color}};
+            --site-tertiary-color: {{@custom.site_tertiary_color}};
         }
     </style>
 
-    <script>
-        /* The script for calculating the color contrast has been taken from
-        https://gomakethings.com/dynamically-changing-the-text-color-based-on-background-color-contrast-with-vanilla-js/ */
-        var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--background-color');
-        accentColor = accentColor.trim().slice(1);
-
-        if (accentColor.length === 3) {
-            accentColor = accentColor[0] + accentColor[0] + accentColor[1] + accentColor[1] + accentColor[2] + accentColor[2];
-        }
-
-        var r = parseInt(accentColor.substr(0, 2), 16);
-        var g = parseInt(accentColor.substr(2, 2), 16);
-        var b = parseInt(accentColor.substr(4, 2), 16);
-        var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-        var textColor = (yiq >= 128) ? 'dark' : 'light';
-
-        document.documentElement.className = `has-${textColor}-text`;
-    </script>
+    {{#is "post"}}
+        {{!-- Tocbot for tables of content --}}
+        <link rel="stylesheet" href="{{asset "css/tocbot.css"}}">
+    {{/is}}
 
     {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag --}}
     {{ghost_head}}
@@ -54,13 +45,13 @@
 <body class="{{body_class}} has-{{#match @custom.title_font "Elegant serif"}}serif{{else match @custom.title_font "Consistent mono"}}mono{{else}}sans{{/match}}-title has-{{#match @custom.body_font "Elegant serif"}}serif{{else}}sans{{/match}}-body">
 
 <div class="gh-viewport">
-    
+
     {{> "components/navigation" navigationLayout=@custom.navigation_layout}}
 
     {{{body}}}
-    
+
     {{> "components/footer"}}
-    
+
 </div>
 
 {{#is "post, page"}}
@@ -70,8 +61,8 @@
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
 <script src="{{asset "built/source.js"}}"></script>
 
-{{#is
-"post"}}
+{{!-- Reading Progress --}}
+{{#is "post"}}
   <script>
     const progressBar = document.querySelector('.reading-progress');
 
@@ -86,8 +77,7 @@
 
     requestAnimationFrame(updateProgress);
   </script>
-{{/is
-}}
+{{/is}}
 
 {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
 {{ghost_foot}}
