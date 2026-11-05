@@ -95,6 +95,23 @@
 
 </main>
 
+{{#has tag="Articles"}}
+    <script src="{{asset "js/tocbot.js"}}"></script>
+    <script>
+        tocbot.init({
+            tocSelector: ".gh-toc",
+            contentSelector: ".gh-content",
+            headingSelector: "h1, h2, h3, h4",
+            hasInnerContainers: true,
+            includeTitleTags: true,
+            ignoreSelector: ".toc-title",
+            collapseDepth: 1,
+            activeListItemClass: "is-active-link",
+            orderedList: false,
+        });
+    </script>
+{{/has}}
+
 {{/post}}
 
 {{#if @custom.show_related_articles}}
@@ -113,18 +130,3 @@
         {{/if}}
     {{/get}}
 {{/if}}
-
-<script src="{{asset "js/tocbot.js"}}"></script>
-<script>
-    tocbot.init({
-        tocSelector: ".gh-toc",
-        contentSelector: ".gh-content",
-        headingSelector: "h1, h2, h3, h4",
-        hasInnerContainers: true,
-        includeTitleTags: true,
-        ignoreSelector: ".toc-title",
-        collapseDepth: 1,
-        activeListItemClass: "is-active-link",
-        orderedList: false,
-    });
-</script>
