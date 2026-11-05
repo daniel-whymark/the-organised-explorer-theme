@@ -1,5 +1,4 @@
 # TODO
-
 ## Posts
 - Refactor Hull Fish trail
 - Image alt text
@@ -14,9 +13,3 @@
 ## Other
 - Randomise cover_image
 - Review [Citation Needed](https://www.citationneeded.news/substack-to-self-hosted-ghost/) for any overlooked steps
-
-
-## Migration
-- Add Supporter tier (nice example: https://martinrobbins.substack.com/about)
-- Review welcome emails
-- Add recommendations
