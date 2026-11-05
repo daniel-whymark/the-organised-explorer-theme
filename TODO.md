@@ -1,15 +1,12 @@
 # TODO
-## Posts
+## Frontend
 - Refactor Hull Fish trail
+- Images / descriptions for Tags
 - Image alt text
 - Update google map links to be Places (and add new)
 
 
-## Integrations
+## Backend
 - Buffer for posts
 - Page with Google Form for contact/feedback
-
-
-## Other
-- Randomise cover_image
-- Review [Citation Needed](https://www.citationneeded.news/substack-to-self-hosted-ghost/) for any overlooked steps
+- Randomise cover_image ?
