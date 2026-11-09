@@ -1,4 +1,4 @@
-<footer class="gh-footer{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
+<footer class="gh-footer gh-outer">
     <div class="gh-footer-inner gh-inner">
 
         {{#if @site.members_enabled}}
@@ -16,6 +16,18 @@
         {{/if}}
 
         <div class="gh-social-links">
+            <a href="/rss/" target="_blank" rel="alternate" aria-label="RSS" type="application/rss+xml">
+                {{#> (concat "icons/rss" type)}}
+                    <span>{{name}}</span>
+                {{/undefined}}
+            </a>
+
+            <a href="https://fed.brid.gy/ap/@index@theorganisedexplorer.com" target="_blank" rel="noopener" aria-label="Mastodon">
+                {{#> (concat "icons/mastodon" type)}}
+                    <span>{{name}}</span>
+                {{/undefined}}
+            </a>
+
             {{#social_accounts @site}}
                 <a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
                     {{#> (concat "icons/" type)}}
@@ -24,6 +36,12 @@
                     {{/undefined}}
                 </a>
             {{/social_accounts}}
+
+            <a href="https://uk.pinterest.com/theorganisedexplorer/" target="_blank" rel="noopener" aria-label="Pinterest">
+                {{#> (concat "icons/pinterest" type)}}
+                    <span>{{name}}</span>
+                {{/undefined}}
+            </a>
         </div>
 
         <div class="gh-footer-bar">
@@ -37,10 +55,24 @@
             <nav class="gh-footer-menu">
                 {{navigation type="secondary"}}
             </nav>
+
             <div class="gh-footer-copyright">
-                {{{t "Powered by {ghostlink}" ghostlink="<a href=\"https://ghost.org/\" target=\"_blank\" rel=\"noopener\">Ghost</a>"}}}
+                &copy; {{date format="YYYY"}} <a href="https://github.com/daniel-whymark/the-organised-explorer-theme" target="_blank" rel="noopener">The Organised Explorer</a>.
             </div>
         </div>
 
     </div>
+
+    {{!-- For debugging --}}
+    <p class="the_net">
+         <small>
+             <a
+                 href="/cdn-cgi/trace"
+                 tabindex="-1"
+                 aria-hidden="true"
+                 rel="noindex">
+                 &pi;
+             </a>
+         </small>
+     </p>
 </footer>

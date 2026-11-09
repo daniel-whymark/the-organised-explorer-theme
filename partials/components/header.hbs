@@ -1,5 +1,15 @@
 {{#match headerStyle "!=" "Off"}}
 
+    {{#match headerStyle "!=" "Landing"}}
+    {{#match headerStyle "!=" "Search"}}
+        {{#if @custom.show_extra_header}}
+            {{#if @site.cover_image}}
+                {{> "components/header-cover"}}
+            {{/if}}
+        {{/if}}
+    {{/match}}
+    {{/match}}
+
     {{#match headerStyle "Highlight"}}
         {{> "components/header-content"}}
     {{else match headerStyle "Magazine"}}

@@ -8,7 +8,7 @@
 
 <section class="gh-container is-{{#match postFeedStyle "List"}}list{{else}}grid{{/match}}{{#if showSidebar}} has-sidebar{{/if}}{{#unless @custom.show_images_in_feed}} no-image{{/unless}} gh-outer">
     <div class="gh-container-inner gh-inner">
-        
+
         {{#if showTitle}}
             <h2 class="gh-container-title">
                 {{#unless title}}{{t "Latest"}}{{else}}{{title}}{{/unless}}
@@ -31,7 +31,7 @@
                             {{/match}}
                         {{else}}
                             {{#match posts.length ">=" 10}}
-                                {{#get "posts" include="authors" limit="22"}}
+                                {{#get "posts" include="authors" filter="tag:-socials" limit="22"}}
                                     {{#foreach posts from="11"}}
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
@@ -40,14 +40,14 @@
                         {{/if}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
-                            {{#get "posts" include="authors" limit="19"}}
+                            {{#get "posts" include="authors" filter="tag:-socials" limit="19"}}
                                 {{#foreach posts from="8"}}
                                     {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}
                             {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#get "posts" include="authors" limit=@config.posts_per_page}}
+                        {{#get "posts" include="authors" filter="tag:-socials" limit=@config.posts_per_page}}
                             {{#foreach posts}}
                                 {{> "post-card" lazyLoad=true}}
                             {{/foreach}}
@@ -64,6 +64,7 @@
                             {{/foreach}}
                         {{/get}}
                     {{/match}}
+
                     {{#foreach posts}}
                         {{> "post-card" lazyLoad=true}}
                     {{/foreach}}
@@ -80,7 +81,7 @@
 
             {{#match pagination.pages ">" 1}}
                 <div class="gh-more is-title">
-                    <a href="{{@site.url}}/page/2/">{{t "See all"}} {{> "icons/arrow"}}</a>
+                    <a href="{{@site.url}}/page/2/">{{t "See all content"}} {{> "icons/arrow"}}</a>
                 </div>
             {{/match}}
         </main>
