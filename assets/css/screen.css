@@ -985,7 +985,7 @@ html.gh-navigation-open {
 }
 
 .gh-card-title {
-    font-size: calc(1.9rem * var(--factor, 1));
+    font-size: calc(2.375rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.014em;
     line-height: 1.3;
