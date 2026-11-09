@@ -1,11 +1,91 @@
 {
-    "name": "source",
-    "description": "A default theme for the Ghost publishing platform",
-    "demo": "https://source.ghost.io",
-    "version": "1.7.6",
-    "engines": {
-        "ghost": ">=5.0.0",
-        "node": ">=22.12.0"
+  "name": "the-organised-explorer",
+  "description": "A Ghost theme for The Organised Explorer",
+  "demo": "https://theorganisedexplorer.com",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=6.0.0",
+    "node": ">=22.12.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "gulp",
+    "zip": "gulp zip",
+    "build": "gulp build",
+    "test": "gscan .",
+    "test:ci": "gscan --fatal --verbose .",
+    "pretest": "pnpm zip",
+    "pretest:ci": "pnpm zip",
+    "preship": "pnpm test",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then git push --follow-tags; else echo \"Uncommitted changes found.\" && exit 1; fi",
+    "postship": "git fetch && gulp release"
+  },
+  "packageManager": "pnpm@12.16.1",
+  "author": {
+    "name": "Daniel Whymark",
+    "email": "hi@theorganisedexplorer.com",
+    "url": "https://whymark.net/"
+  },
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "Minimal",
+      "Magazine"
+    ]
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daniel-whymark/the-organised-explorer-theme.git"
+  },
+  "bugs": "https://github.com/daniel-whymark/the-organised-explorer-theme/issues",
+  "contributors": "https://github.com/daniel-whymark/the-organised-explorer-theme/graphs/contributors",
+  "devDependencies": {
+    "@tryghost/release-utils": "0.9.4",
+    "@tryghost/theme-translations": "0.0.22",
+    "autoprefixer": "10.6.2",
+    "beeper": "2.1.0",
+    "cssnano": "9.9.0",
+    "gscan": "6.6.1",
+    "gulp": "5.0.1",
+    "gulp-concat": "2.6.1",
+    "gulp-livereload": "4.0.2",
+    "gulp-postcss": "10.0.0",
+    "gulp-uglify": "3.0.2",
+    "gulp-zip": "6.1.0",
+    "inquirer": "14.2.5",
+    "postcss": "8.5.32",
+    "postcss-easy-import": "4.0.0",
+    "pump": "3.0.4"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "config": {
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xs": {
+        "width": 160
+      },
+      "s": {
+        "width": 320
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 960
+      },
+      "xl": {
+        "width": 1200
+      },
+      "xxl": {
+        "width": 2000
+      }
     },
     "license": "MIT",
     "scripts": {
@@ -214,4 +294,5 @@
             }
         }
     }
+  }
 }

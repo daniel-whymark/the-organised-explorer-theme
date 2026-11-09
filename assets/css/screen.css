@@ -10,10 +10,9 @@ production stylesheet in assets/built/screen.css
 4. Globals
 5. Layout
 6. Navigation
-  6.1. Navigation styles
-  6.2. Navigation layouts
-  6.3. Dropdown menu
-  6.4. Mobile menu
+  6.1. Navigation layouts
+  6.2. Dropdown menu
+  6.3. Mobile menu
 7. Card
 8. Header
   8.1. Magazine layout
@@ -33,6 +32,8 @@ production stylesheet in assets/built/screen.css
   14.1. Article
   14.2. Page template
   14.3. Page without header
+  14.4. Reading Progress
+  14.5. Table of Contents
 15. Content
 16. Cards
 17. Comments
@@ -40,11 +41,12 @@ production stylesheet in assets/built/screen.css
 19. Archive
 20. Design settings
 21. Footer
-  21.1. Footer styles
-  21.2. Footer bar
-  21.3. Footer signup
-  21.4. Social links
+  21.1. Footer bar
+  21.2. Footer signup
+  21.3. Social links
 22. Lightbox
+23. Dark Mode
+24. Reduced Motion
 
 */
 
@@ -52,17 +54,19 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 
 :root {
-    --color-white: #fff;
+    --background-color: var(--site-background-color);
+    --primary-color: var(--site-primary-color);
+    --secondary-color: var(--site-secondary-color);
+    --tertiary-color: var(--site-tertiary-color);
+
+    --color-border: var(--secondary-color);
+    --logo-background-color: white;
     --color-lighter-gray: rgb(0 0 0 / 0.05);
     --color-light-gray: #e6e6e6;
-    --color-mid-gray: #ccc;
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
-    --color-black: #000;
     --color-primary-text: var(--color-darker-gray);
     --color-secondary-text: rgb(0 0 0 / 0.55);
-    --color-border: rgb(0 0 0 / 0.08);
-    --color-dark-border: rgb(0 0 0 / 0.55);
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
@@ -70,15 +74,8 @@ production stylesheet in assets/built/screen.css
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
     --grid-gap: 42px;
-}
-
-:root.has-light-text,
-:is(.gh-navigation, .gh-footer).has-accent-color {
-    --color-lighter-gray: rgb(255 255 255 / 0.1);
-    --color-darker-gray: #fff;
-    --color-secondary-text: rgb(255 255 255 / 0.64);
-    --color-border: rgb(255 255 255 / 0.15);
-    --color-dark-border: rgb(255 255 255 / 0.5);
+    --border-size: 2px;
+    --border-thick-size: 4px;
 }
 
 /* 2. Fonts
@@ -89,7 +86,9 @@ production stylesheet in assets/built/screen.css
 /* 3. Resets
 /* ---------------------------------------------------------- */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -107,7 +106,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
     height: auto;
     max-width: 100%;
@@ -117,19 +120,34 @@ iframe {
     display: block;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
     font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     overflow-wrap: break-word;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     line-height: 1.2;
 }
 
-sub, sup {
+sub,
+sup {
     line-height: 1;
 }
 
@@ -143,7 +161,12 @@ body {
     color: var(--color-primary-text);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--gh-font-heading, var(--font-sans));
 }
 
@@ -166,15 +189,17 @@ a:hover {
     font-weight: 600;
     letter-spacing: -0.004em;
     line-height: 1;
-    color: var(--color-white);
+    color: white;
     cursor: pointer;
-    background-color: var(--ghost-accent-color);
-    border: 0;
+    background-color: var(--primary-color);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 100px;
+    transition: all 0.4s ease;
 }
 
 .gh-button:hover {
     opacity: 0.95;
+    background-color: var(--tertiary-color);
 }
 
 .gh-icon-button {
@@ -227,11 +252,6 @@ a:hover {
     background-color: rgb(0 0 0 / 0.065);
 }
 
-.has-light-text .gh-form:hover,
-.gh-footer.has-accent-color .gh-form:hover {
-    background-color: rgb(255 255 255 / 0.15);
-}
-
 .gh-form-input {
     position: absolute;
     inset: 0;
@@ -248,14 +268,6 @@ a:hover {
     transition: 0.3s ease-in-out;
 }
 
-input.gh-form-input {
-    position: static;
-    flex: 1;
-    min-width: 0;
-    padding-inline-end: 16px;
-    text-overflow: ellipsis;
-}
-
 .gh-form-input::placeholder,
 button.gh-form-input {
     color: rgb(0 0 0 / 0.3);
@@ -269,17 +281,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .gh-form.gh-form.success .gh-form-input {
     opacity: 0.5;
-}
-
-.has-light-text .gh-form-input,
-.gh-footer.has-accent-color .gh-form-input {
-    color: #fff;
-}
-
-.has-light-text .gh-form-input::placeholder,
-.has-light-text button.gh-form-input,
-.gh-footer.has-accent-color .gh-form-input::placeholder {
-    color: rgb(255 255 255 / 0.55);
 }
 
 .gh-header.is-classic.has-image .gh-form-input {
@@ -299,16 +300,15 @@ button.gh-form-input {
     cursor: pointer;
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) button.gh-form-input,
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) button.gh-form-input,
 body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) button.gh-form-input,
 body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) button.gh-form-input {
     padding-inline-start: 50px;
 }
 
 .gh-form .gh-button {
-    position: relative;
-    flex-shrink: 0;
-    margin-inline-end: 6px;
+    position: absolute;
+    right: 6px;
     min-width: 132px;
     padding-inline: 24px;
     height: 44px;
@@ -323,7 +323,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     color: var(--color-secondary-text);
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form > svg {
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form > svg {
     left: 16px;
 }
 
@@ -371,6 +371,10 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
         min-width: 104px;
         padding-inline: 12px;
     }
+}
+
+:focus-visible {
+    outline: solid var(--primary-color);
 }
 
 /* 5. Layout
@@ -466,7 +470,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-navigation-logo img {
-    max-height: 40px;
+    max-height: 60px;
 }
 
 .gh-navigation-menu {
@@ -520,10 +524,6 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     background-color: var(--background-color);
 }
 
-.gh-navigation.has-accent-color .gh-navigation-actions {
-    background-color: var(--ghost-accent-color);
-}
-
 .gh-navigation-members {
     display: flex;
     gap: 20px;
@@ -561,26 +561,13 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     .gh-navigation-brand .gh-search {
         display: none;
     }
-}
 
-@media (min-width: 768px) and (scripting: enabled) {
     .gh-navigation:not(.is-dropdown-loaded) .gh-navigation-menu .nav > li {
         opacity: 0;
     }
 }
 
-/* 6.1. Navigation styles */
-
-.gh-navigation.has-accent-color {
-    background-color: var(--ghost-accent-color);
-}
-
-.gh-navigation.has-accent-color .gh-button {
-    background-color: #fff;
-    color: #15171a;
-}
-
-/* 6.2. Navigation layouts */
+/* 6.1. Navigation layouts */
 
 /*
 ======================================================================
@@ -684,8 +671,14 @@ Search                         LOGO                    Login Subscribe
         top: 80px;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: var(--border-thick-size);
         content: "";
+        background-color: var(--color-border);
+    }
+
+    .gh-border {
+        isolation: isolate;
+        border-block: var(--border-thick-size) solid var(--color-border);
         background-color: var(--color-border);
     }
 
@@ -706,7 +699,7 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
-/* 6.3. Dropdown menu */
+/* 6.2. Dropdown menu */
 
 .gh-dropdown {
     position: absolute;
@@ -718,11 +711,15 @@ Search                         LOGO                    Login Subscribe
     margin-top: 24px;
     text-align: left;
     visibility: hidden;
-    background-color: #fff;
+    background-color: white;
     border-radius: 5px;
-    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 7px 20px -5px rgb(0 0 0 / 0.15);
+    box-shadow:
+        0 0 0 1px rgb(0 0 0 / 0.04),
+        0 7px 20px -5px rgb(0 0 0 / 0.15);
     opacity: 0;
-    transition: opacity 0.3s, transform 0.2s;
+    transition:
+        opacity 0.3s,
+        transform 0.2s;
     transform: translate3d(0, 6px, 0);
 }
 
@@ -758,7 +755,7 @@ Search                         LOGO                    Login Subscribe
     padding: 8px 0;
 }
 
-/* 6.4. Mobile menu */
+/* 6.3. Mobile menu */
 
 html.gh-navigation-open {
     overflow: hidden;
@@ -773,7 +770,6 @@ html.gh-navigation-open {
 }
 
 .gh-burger {
-    display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -875,10 +871,6 @@ html.gh-navigation-open {
         font-size: 1.75rem;
     }
 
-    #gh-main {
-        transition: opacity 0.4s;
-    }
-
     .is-open#gh-navigation {
         position: fixed;
         inset: 0;
@@ -903,7 +895,9 @@ html.gh-navigation-open {
 
     .is-open#gh-navigation .nav li {
         opacity: 1;
-        transition: transform 0.2s, opacity 0.2s;
+        transition:
+            transform 0.2s,
+            opacity 0.2s;
         transform: translateY(0);
     }
 
@@ -921,17 +915,15 @@ html.gh-navigation-open {
 
     .is-open#gh-navigation :is(.gh-button, a[data-portal="signin"]) {
         opacity: 1;
-        transition: transform 0.4s, opacity 0.4s;
+        transition:
+            transform 0.4s,
+            opacity 0.4s;
         transition-delay: 0.2s;
         transform: translateY(0);
     }
 
     .is-open#gh-navigation a[data-portal="signin"] {
         transition-delay: 0.4s;
-    }
-
-    .is-open#gh-main {
-        opacity: 0;
     }
 }
 
@@ -940,42 +932,27 @@ html.gh-navigation-open {
 
 .gh-card {
     position: relative;
+    border-radius: 12px;
 }
 
 .gh-card-link {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    color: var(--color-darker-gray);
 }
 
-.gh-card-title-link {
-    color: inherit;
-}
-
-.gh-card-title-link:hover {
+.gh-card-link:hover {
     opacity: 1;
-}
-
-/* Stretch the title link over the whole card */
-.gh-card-title-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-}
-
-.gh-card-title-link:focus-visible {
-    outline: none;
-}
-
-.gh-card-title-link:focus-visible::after {
-    outline: auto;
 }
 
 .gh-card-image {
     position: relative;
     flex-shrink: 0;
     aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--color-lighter-gray);
+    box-shadow: 1px 1px 5px var(--color-lighter-gray);
 }
 
 .gh-card-image img {
@@ -984,6 +961,14 @@ html.gh-navigation-open {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.gh-card img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.gh-card:hover img {
+    transform: scale(1.05);
 }
 
 .gh-card-wrapper {
@@ -1000,7 +985,7 @@ html.gh-navigation-open {
 }
 
 .gh-card-title {
-    font-size: calc(1.9rem * var(--factor, 1));
+    font-size: calc(2.375rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.014em;
     line-height: 1.3;
@@ -1134,7 +1119,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1150,7 +1135,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1191,7 +1176,7 @@ html.gh-navigation-open {
         left: 0;
         content: "";
         width: 100%;
-        height: 1px;
+        height: var(--border-size);
         background-color: var(--color-border);
     }
 
@@ -1204,7 +1189,7 @@ html.gh-navigation-open {
         top: 0;
         right: calc(var(--grid-gap) / -2);
         content: "";
-        width: 1px;
+        width: var(--border-size);
         height: 100%;
         background-color: var(--color-border);
     }
@@ -1238,7 +1223,7 @@ html.gh-navigation-open {
         left: 0;
         content: "";
         width: 100%;
-        height: 1px;
+        height: var(--border-size);
         background-color: var(--color-border);
     }
 }
@@ -1330,7 +1315,7 @@ html.gh-navigation-open {
     top: 0;
     right: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1341,7 +1326,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1380,7 +1365,7 @@ html.gh-navigation-open {
         top: 0;
         left: calc(var(--grid-gap) / -2);
         content: "";
-        width: 1px;
+        width: var(--border-size);
         height: 100%;
         background-color: var(--color-border);
     }
@@ -1437,6 +1422,14 @@ html.gh-navigation-open {
     letter-spacing: -0.028em;
 }
 
+.gh-header.is-classic .gh-header-subtitle {
+    font-size: calc(clamp(1.8rem, 0.68vw + 1.53rem, 2.4rem) * var(--factor, 1));
+    line-height: 1.4;
+    letter-spacing: -0.014em;
+    font-weight: 450;
+    opacity: 0.75;
+}
+
 .gh-header.is-classic.has-image {
     margin-top: 0;
 }
@@ -1445,13 +1438,17 @@ html.gh-navigation-open {
     position: absolute;
     inset: 0;
     content: "";
-    opacity: 0.3;
-    background-color: var(--color-black);
-    transition: opacity 1.5s ease;
+    opacity: 0;
+    background-color: black;
+    transition: opacity 3s ease-in;
+
+    @starting-style {
+        opacity: 0.3;
+    }
 }
 
 .gh-header.is-classic.has-image .gh-header-inner {
-    color: #fff;
+    color: white;
 }
 
 .gh-header.is-classic.has-image .gh-header-image {
@@ -1464,7 +1461,7 @@ html.gh-navigation-open {
 }
 
 .gh-header.is-classic.has-image .gh-form {
-    background-color: #fff;
+    background-color: white;
 }
 
 /* 9. CTA
@@ -1473,6 +1470,7 @@ html.gh-navigation-open {
 .gh-cta {
     display: none;
     margin-top: max(4vw, 40px);
+    padding-inline: 0;
 }
 
 .gh-header:is(.is-highlight, .is-magazine) + .gh-cta {
@@ -1489,6 +1487,7 @@ html.gh-navigation-open {
     padding: clamp(48px, 3.64vw + 33.45px, 80px) clamp(40px, 2.73vw + 29.09px, 64px);
     text-align: center;
     background-color: var(--color-lighter-gray);
+    max-width: none;
 }
 
 .gh-cta-content {
@@ -1496,7 +1495,7 @@ html.gh-navigation-open {
 }
 
 .gh-cta-title {
-    font-size: clamp(2.8rem,1.36vw + 2.25rem,4rem);
+    font-size: clamp(2.8rem, 1.36vw + 2.25rem, 4rem);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.021em;
@@ -1535,12 +1534,12 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-featured-feed {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
 }
 
@@ -1602,7 +1601,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1700,7 +1699,7 @@ html.gh-navigation-open {
     top: 0;
     right: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1708,7 +1707,7 @@ html.gh-navigation-open {
 /* 11.2. Without sidebar */
 
 .gh-container:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-container.is-list.no-image:not(.has-sidebar) :is(.gh-container-title, .gh-main, .gh-more) {
@@ -1741,7 +1740,7 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-container:not(:has(.gh-card)) .gh-container-title {
@@ -1809,7 +1808,7 @@ html.gh-navigation-open {
     left: 0;
     content: "";
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1843,7 +1842,7 @@ html.gh-navigation-open {
     right: calc(var(--grid-gap) / -2);
     left: calc(var(--grid-gap) / -2);
     content: "";
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
 }
 
@@ -1852,7 +1851,7 @@ html.gh-navigation-open {
     top: 0;
     left: calc(var(--grid-gap) / -2);
     content: "";
-    width: 1px;
+    width: var(--border-size);
     height: 100%;
     background-color: var(--color-border);
 }
@@ -1892,7 +1891,7 @@ html.gh-navigation-open {
     font-weight: 550;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-about {
@@ -2040,7 +2039,16 @@ html.gh-navigation-open {
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
+}
+
+.gh-article-tag-group {
+    display: flex;
+    justify-content: left;
+    gap: 8px 14px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-top: 10px;
 }
 
 .gh-article-title {
@@ -2126,7 +2134,9 @@ html.gh-navigation-open {
 }
 
 .gh-article-image img {
-    width: 100%;
+    height: 100%;
+    max-height: 360px;
+    margin: auto;
 }
 
 /* 14.2. Page template */
@@ -2149,6 +2159,114 @@ html.gh-navigation-open {
     margin-top: 0;
 }
 
+/* 14.4. Reading Progress */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 6px;
+    border: none;
+    color: var(--primary-color);
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.reading-progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+
+.reading-progress::-webkit-progress-value {
+    background: var(--primary-color);
+}
+
+.reading-progress::-moz-progress-bar {
+    background: var(--primary-color);
+}
+
+/* 14.5. Table of Contents */
+.gh-toc > .toc-list {
+    position: relative;
+}
+
+.toc-list {
+    overflow: hidden;
+    list-style: none;
+}
+
+.gh-toc > :is(ul, ol, p) {
+    font-size: 0.95em;
+}
+
+.gh-toc .toc-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.gh-toc a.toc-link:hover {
+    color: var(--tertiary-color);
+    opacity: 1;
+}
+
+.toc-title {
+    padding: 0 0 10px 28px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.gh-toc-float:not(:has(.gh-toc .toc-list-item)) {
+    display: none;
+}
+
+@media (width < 1300px) {
+    .gh-toc .is-active-link::before {
+        background-color: transparent;
+    }
+
+    .gh-toc .is-active-link {
+        font-weight: inherit;
+    }
+
+    .gh-toc .toc-link::before {
+        background-color: transparent;
+    }
+}
+
+@media (width >= 1300px) {
+    .gh-toc > .toc-list {
+        padding-right: 28px;
+    }
+
+    .post-template .gh-content > .gh-sidebar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: 4vmin;
+        grid-column: full-start / wide-start;
+    }
+
+    .gh-toc-float {
+        position: sticky;
+        top: 4vmin;
+    }
+
+    .gh-toc .is-active-link::before {
+        background-color: var(--secondary-color);
+    }
+
+    .gh-toc .toc-link.is-active-link {
+        color: var(--secondary-color);
+    }
+
+    .toc-hr {
+        visibility: hidden;
+    }
+}
+
 /* 15. Content
 /* ---------------------------------------------------------- */
 
@@ -2159,6 +2277,7 @@ headings, text, images and lists. We deal with cards lower down. */
 .gh-content {
     font-size: var(--content-font-size, 1.7rem);
     letter-spacing: -0.01em;
+    position: relative;
 }
 
 /* Default vertical spacing */
@@ -2180,9 +2299,9 @@ unless a heading is the very first element in the post content */
 
 /* Add drop cap setting */
 .post-template .gh-content.drop-cap > p:first-of-type:first-letter {
-    margin :0 0.2em 0em 0;
+    margin: 0 0.2em 0em 0;
     font-size: 3.1em;
-    float:left;
+    float: left;
     line-height: 1;
     margin-left: -1px;
     font-weight: 700;
@@ -2224,7 +2343,7 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content a {
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -2263,7 +2382,7 @@ unless a heading is the very first element in the post content */
 
 .gh-content hr {
     width: 100%;
-    height: 1px;
+    height: var(--border-size);
     background-color: var(--color-border);
     border: 0;
 }
@@ -2286,7 +2405,7 @@ unless a heading is the very first element in the post content */
 .gh-content .gh-table table th {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--color-darkgrey);
+    color: var(--color-dark-gray);
     text-align: left;
     text-transform: uppercase;
     letter-spacing: 0.2px;
@@ -2295,7 +2414,7 @@ unless a heading is the very first element in the post content */
 .gh-content .gh-table table :is(th, td),
 .gh-content .gh-table table td {
     padding: 6px 12px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-content .gh-table table :is(th, td):first-child {
@@ -2327,6 +2446,21 @@ unless a heading is the very first element in the post content */
     font-family: var(--font-mono);
 }
 
+div.gmaps {
+    max-width: 75%;
+    height: 75vh;
+    margin: 0 auto 6vw;
+    overflow: hidden;
+}
+
+iframe.gmaps {
+    width: 100%;
+    height: 100%;
+    border: none;
+    top: -60px;
+    position: relative;
+}
+
 /* 16. Cards
 /* ---------------------------------------------------------- */
 
@@ -2353,6 +2487,11 @@ unless a heading is the very first element in the post content */
 .kg-image {
     margin-right: auto;
     margin-left: auto;
+}
+
+img.kg-image,
+img.gh-feature-image {
+    border-radius: 0.25em !important;
 }
 
 /* Embed */
@@ -2406,7 +2545,7 @@ unless a heading is the very first element in the post content */
 
 blockquote:not([class]) {
     padding-left: 2rem;
-    border-left: 4px solid var(--ghost-accent-color);
+    border-left: 4px solid var(--primary-color);
 }
 
 blockquote.kg-blockquote-alt {
@@ -2419,7 +2558,7 @@ blockquote.kg-blockquote-alt {
 
 .kg-card.kg-button-card .kg-btn {
     height: unset;
-    padding: .6em 1.2em;
+    padding: 0.6em 1.2em;
     text-align: center;
     font-size: 1em;
     line-height: 1.2em;
@@ -2532,7 +2671,7 @@ figcaption {
 }
 
 figcaption a {
-    color: var(--ghost-accent-color);
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -2582,7 +2721,7 @@ figcaption a {
     gap: var(--grid-gap);
     grid-column: 1 / -1;
     padding-bottom: clamp(40px, 2.73vw + 29.09px, 64px);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--border-size) solid var(--color-border);
 }
 
 .gh-archive.has-image .gh-archive-inner {
@@ -2591,7 +2730,7 @@ figcaption a {
 }
 
 .gh-archive:not(.has-sidebar):not(.has-image) .gh-archive-inner {
-    grid-column: 3 / span 12;
+    grid-column: 1 / span 16;
 }
 
 .gh-archive .gh-article-image {
@@ -2713,15 +2852,15 @@ figcaption a {
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
     line-height: 1.15;
     letter-spacing: -0.006em;
-    font-size: calc(2.0rem*var(--factor, 1))
+    font-size: calc(2rem * var(--factor, 1));
 }
 
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
-    font-size: calc(1.6rem*var(--factor, 1))
+    font-size: calc(1.6rem * var(--factor, 1));
 }
 
 .has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-featured-feed .gh-card-title {
-    font-size: calc(1.5rem*var(--factor, 1));
+    font-size: calc(1.5rem * var(--factor, 1));
     letter-spacing: 0;
 }
 
@@ -2730,7 +2869,7 @@ figcaption a {
 }
 
 .has-mono-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
-    font-size: calc(1.8rem*var(--factor, 1));
+    font-size: calc(1.8rem * var(--factor, 1));
     line-height: 1.2;
 }
 
@@ -2762,10 +2901,10 @@ figcaption a {
     letter-spacing: -0.001em;
 }
 
-.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-magazine .gh-header-inner>.gh-card .gh-card-title,
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title,
 .has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-header.is-highlight .gh-header-left .gh-card-title {
     font-weight: 550;
-    font-size: clamp(3.2rem,1.82vw + 2.47rem,4.9rem)
+    font-size: clamp(3.2rem, 1.82vw + 2.47rem, 4.9rem);
 }
 
 .has-serif-body:not([class*=" gh-font-body"]):not([class^="gh-font-body"]) .gh-about-description {
@@ -2780,7 +2919,7 @@ figcaption a {
     letter-spacing: 0;
 }
 
-:is(.has-serif-title,.has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button, .gh-form, .gh-form-input),
+:is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) :is(.gh-button, .gh-form, .gh-form-input),
 body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) :is(.gh-button, .gh-form, .gh-form-input),
 body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-heading-inter):not(.gh-font-heading-manrope):not(.gh-font-heading-noto-sans):not(.gh-font-heading-nunito):not(.gh-font-heading-poppins):not(.gh-font-heading-roboto):not(.gh-font-heading-space-grotesk) :is(.gh-button, .gh-form, .gh-form-input) {
     border-radius: 0;
@@ -2797,28 +2936,26 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-top: 120px;
     font-size: 1.5rem;
     color: var(--color-darker-gray);
+    padding: 0;
 }
 
 .gh-footer a:not(.gh-button) {
     color: inherit;
 }
 
-/* 21.1 Footer styles */
-
-.gh-footer.has-accent-color {
-    background-color: var(--ghost-accent-color);
+.gh-footer-inner {
+    max-width: none;
 }
 
-.gh-footer.has-accent-color .gh-footer-bar {
-    border-top: 0;
+.gh-footer .the_net {
+    text-align: right;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 0.1;
 }
 
-.gh-footer.has-accent-color .gh-button {
-    background-color: #fff;
-    color: #15171a;
-}
-
-/* 21.2. Footer bar */
+/* 21.1. Footer bar */
 
 .gh-footer-bar {
     display: grid;
@@ -2828,7 +2965,9 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-bottom: 120px;
     padding-block: 28px;
     font-weight: 550;
-    border-block: 1px solid var(--color-border);
+    border-block: var(--border-thick-size) solid var(--color-border);
+    max-width: none;
+    padding-inline: max(0px, calc((100% - var(--container-width)) / 2));
 }
 
 .gh-footer-logo {
@@ -2841,7 +2980,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-footer-logo img {
-    max-height: 40px;
+    max-height: 60px;
 }
 
 .gh-footer-menu .nav {
@@ -2863,7 +3002,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     text-decoration: underline;
 }
 
-/* 21.3. Footer signup */
+/* 21.2. Footer signup */
 
 .gh-footer-signup {
     display: flex;
@@ -2874,7 +3013,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-footer-signup-header {
-    font-size: calc(clamp(2.8rem,1.36vw + 2.25rem,4rem) * var(--factor, 1));
+    font-size: calc(clamp(2.8rem, 1.36vw + 2.25rem, 4rem) * var(--factor, 1));
     font-weight: 700;
     letter-spacing: -0.03em;
 }
@@ -2901,7 +3040,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 }
 
-/* 21.4. Social links */
+/* 21.3. Social links */
 
 .gh-social-links {
     display: flex;
@@ -3039,7 +3178,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .pswp__img--placeholder--blank {
-    background: var(--color-black);
+    background: black;
 }
 
 .pswp--ie .pswp__img {
@@ -3208,7 +3347,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     font-size: 11px;
     font-weight: 700;
     line-height: 44px;
-    color: var(--color-white);
+    color: white;
     user-select: none;
 }
 
@@ -3226,7 +3365,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin: 0 auto;
     font-size: 11px;
     line-height: 1.6;
-    color: var(--color-white);
+    color: white;
     text-align: center;
 }
 
@@ -3316,7 +3455,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     height: 14px;
     margin: 0;
     background: none;
-    border: 2px solid var(--color-white);
+    border: 2px solid white;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-radius: 50%;
@@ -3423,28 +3562,51 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     margin-top: 20px;
 }
 
-.has-light-text .gh-button-share {
-    border-color: rgba(255, 255, 255, 0.25);
-    color: rgba(255, 255, 255, 0.85);
+/* 23. Dark Mode
+/* ---------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --color-lighter-gray: rgb(255 255 255 / 0.1);
+        --color-darker-gray: white;
+        --color-secondary-text: rgb(255 255 255 / 0.64);
+    }
+
+    .gh-form:hover {
+        background-color: rgb(255 255 255 / 0.15);
+    }
+
+    .gh-form-input {
+        color: white;
+    }
+
+    .gh-form-input::placeholder,
+    button.gh-form-input {
+        color: rgb(255 255 255 / 0.55);
+    }
+
+    .gh-navigation-logo img,
+    .gh-footer-logo img {
+        border-radius: 8px;
+        border: 1px solid var(--secondary-color);
+        background-color: var(--logo-background-color);
+    }
 }
 
-.has-light-text .gh-button-share:hover {
-    border-color: rgba(255, 255, 255, 0.85);
-}
+/* 24. Reduced Motion
+/* ---------------------------------------------------------- */
 
-.gh-button-share {
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 999px;
-    color: rgba(0, 0, 0, 0.85);
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    white-space: nowrap;
-}
+@media (prefers-reduced-motion: reduce) {
+    .gh-header.is-classic.has-image::before {
+        transition: none;
+    }
 
-.gh-button-share:hover {
-    border-color: rgba(0, 0, 0, 0.5);
+    .gh-card img {
+        transition: none;
+    }
+
+    .gh-card:hover img {
+        transform: none;
+    }
 }
