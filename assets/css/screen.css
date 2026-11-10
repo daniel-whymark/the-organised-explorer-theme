@@ -2948,6 +2948,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-footer .the_net {
+    font-family: system-ui, sans-serif;
     text-align: right;
     position: absolute;
     bottom: 0px;
