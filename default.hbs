@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {{!-- Preconnect to external domains for better performance --}}
+    <link rel="preconnect" href="https://admin.theorganisedexplorer.com">
+    <link rel="preconnect" href="https://m.stripe.network">
+
     {{!-- Preload main styles and scripts for better performance --}}
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
@@ -57,7 +61,7 @@
 {{/is}}
 
 {{!-- Scripts - handle responsive videos, infinite scroll, and navigation dropdowns --}}
-<script src="{{asset "built/source.js"}}"></script>
+<script defer src="{{asset "built/source.js"}}"></script>
 
 {{!-- Reading Progress --}}
 {{#is "post"}}
