@@ -62,7 +62,8 @@ function js(done) {
         src([
             // pull in lib files first so our own code can depend on it
             'assets/js/lib/*.js',
-            'assets/js/*.js'
+            'assets/js/*.js',
+            '!assets/js/tocbot.js'
         ], {sourcemaps: true}),
         concat('source.js'),
         uglify(),

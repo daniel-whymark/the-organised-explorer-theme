@@ -15,12 +15,10 @@
     <link rel="preload" as="style" href="{{asset "built/screen.css"}}">
     <link rel="preload" as="script" href="{{asset "built/source.js"}}">
 
+    {{!-- Tocbot for tables of content --}}
     {{#is "post"}}
         {{#has tag="Blog Articles"}}
-            {{!-- Tocbot for tables of content --}}
-            <link rel="preload" as="style" href="{{asset "css/tocbot.css"}}">
             <link rel="preload" as="script" href="{{asset "js/tocbot.js"}}">
-            <link rel="stylesheet" href="{{asset "css/tocbot.css"}}">
         {{/has}}
     {{/is}}
 
