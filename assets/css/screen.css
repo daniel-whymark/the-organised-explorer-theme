@@ -281,7 +281,7 @@ a:hover {
 
 .gh-form-input::placeholder,
 button.gh-form-input {
-    color: rgb(0 0 0 / 0.3);
+    color: var(--color-secondary-text);
 }
 
 :is(.has-serif-title, .has-mono-title):not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-form-input,
@@ -295,13 +295,13 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 }
 
 .gh-header.is-classic.has-image .gh-form-input {
-    color: #15171a;
+    color: var(--color-primary-text);
 }
 
 .gh-header.is-classic.has-image .gh-form-input::placeholder,
 .gh-header.is-classic.has-image button.gh-form-input,
 .gh-header.is-classic.has-image .gh-form > svg {
-    color: rgb(0 0 0 / 0.5);
+    color: var(--color-secondary-text);
 }
 
 button.gh-form-input {
@@ -759,7 +759,7 @@ Search                         LOGO                    Login Subscribe
     padding: 7px 20px;
     line-height: 1.5;
     white-space: normal;
-    color: #15171a !important;
+    color: var(--color-primary-text) !important;
 }
 
 .is-dropdown-mega .gh-dropdown li a {
@@ -2244,7 +2244,7 @@ html.gh-navigation-open {
 }
 
 .toc-link::before {
-    background-color: #eee;
+    background-color: var(--color-light-gray);
     content: " ";
     display: inline-block;
     height: inherit;
@@ -3632,23 +3632,16 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     }
 
     .gh-form:hover {
-        background-color: rgb(255 255 255 / 0.15);
+        background-color: var(--color-lighter-gray);
     }
 
     .gh-form-input {
-        color: white;
+        color: var(--color-primary-text);
     }
 
     .gh-form-input::placeholder,
     button.gh-form-input {
-        color: rgb(255 255 255 / 0.55);
-    }
-
-    .gh-navigation-logo img,
-    .gh-footer-logo img {
-        border-radius: 8px;
-        border: 1px solid var(--secondary-color);
-        background-color: var(--logo-background-color);
+        color: var(--color-secondary-text);
     }
 }
 
