@@ -3625,10 +3625,10 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color: #121212;
-        --color-lighter-gray: rgb(255 255 255 / 0.1);
-        --color-darker-gray: white;
-        --color-secondary-text: rgb(255 255 255 / 0.64);
+        --background-color: #e0ded8;
+        --color-lighter-gray: #dddad3;
+        --color-darker-gray: #292929;
+        --color-secondary-text: #595959;
     }
 
     .gh-form:hover {
