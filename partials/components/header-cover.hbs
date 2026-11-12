@@ -1,11 +1,9 @@
 <section class="gh-header is-classic has-image gh-border gh-outer">
 
-    {{!-- Background image --}}
     <img class="gh-header-image" src="{{@site.cover_image}}" alt="{{@site.title}}" fetchpriority="high">
 
     <div class="gh-header-inner gh-inner">
 
-        {{!-- Landing layout --}}
         <div class="is-title">
             <h1 class="gh-header-title">
                 {{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.title}}{{/if}}
@@ -14,11 +12,6 @@
                 {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
             </p>
         </div>
-
-        {{!-- <form class="gh-form">
-            {{> "icons/search"}}
-            <button class="gh-form-input" data-ghost-search>{{t "Search posts, tags and authors"}}</button>
-        </form> --}}
 
     </div>
 
