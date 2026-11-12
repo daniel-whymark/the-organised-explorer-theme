@@ -212,7 +212,7 @@ a:hover {
     color: var(--color-darker-gray);
     cursor: pointer;
     background-color: transparent;
-    border: 0;
+    border: none;
     outline: none;
 }
 
@@ -261,7 +261,7 @@ a:hover {
     font-size: inherit;
     letter-spacing: inherit;
     line-height: 1.1;
-    border: 0;
+    border: none;
     border-radius: 40px;
     background-color: transparent;
     outline: none;
@@ -2005,7 +2005,7 @@ html.gh-navigation-open {
     letter-spacing: 0.025em;
     text-transform: uppercase;
     background-color: transparent;
-    border: 0;
+    border: none;
     color: var(--color-darker-gray);
 }
 
@@ -2430,7 +2430,7 @@ unless a heading is the very first element in the post content */
     width: 100%;
     height: var(--border-size);
     background-color: var(--color-border);
-    border: 0;
+    border: none;
 }
 
 .gh-content .gh-table {
@@ -3264,7 +3264,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     appearance: none;
     cursor: pointer;
     background: none;
-    border: 0;
+    border: none;
     box-shadow: none;
     transition: opacity 0.2s;
 }
@@ -3281,7 +3281,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 
 .pswp__button::-moz-focus-inner {
     padding: 0;
-    border: 0;
+    border: none;
 }
 
 .pswp__ui--over-close .pswp__button--close {
