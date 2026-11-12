@@ -175,7 +175,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+a:not(.gh-button):not([role="button"]):hover {
     opacity: 0.8;
 }
 
