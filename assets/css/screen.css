@@ -59,18 +59,22 @@ production stylesheet in assets/built/screen.css
     --secondary-color: var(--site-secondary-color);
     --tertiary-color: var(--site-tertiary-color);
 
-    --color-border: var(--secondary-color);
-    --logo-background-color: white;
     --color-lighter-gray: rgb(0 0 0 / 0.05);
     --color-light-gray: #e6e6e6;
     --color-dark-gray: #444;
     --color-darker-gray: #15171a;
-    --color-primary-text: var(--color-darker-gray);
     --color-secondary-text: rgb(0 0 0 / 0.55);
+
+    --color-primary-text: var(--color-darker-gray);
+    --color-link: var(--secondary-color);
+    --color-active-link: var(--primary-color);
+    --color-border: var(--secondary-color);
+
     --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-serif: "EB Garamond", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
     --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
+
     --container-width: 1320px;
     --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
     --grid-gap: 42px;
@@ -2046,7 +2050,11 @@ html.gh-navigation-open {
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: var(--primary-color);
+    color: var(--color-link);
+}
+
+.gh-article-tag:hover {
+    color: var(--tertiary-color);
 }
 
 .gh-article-tag-group {
@@ -2235,10 +2243,6 @@ html.gh-navigation-open {
     top: 0;
 }
 
-.is-active-link {
-    font-weight: 700;
-}
-
 .toc-link::before {
     background-color: var(--color-light-gray);
     content: " ";
@@ -2247,7 +2251,7 @@ html.gh-navigation-open {
     left: 0;
     margin-top: -1px;
     position: absolute;
-    width: 2px;
+    width: var(--border-size);
 }
 
 .gh-toc > .toc-list {
@@ -2259,7 +2263,7 @@ html.gh-navigation-open {
 }
 
 .gh-toc .toc-link {
-    color: var(--primary-color);
+    color: var(--color-link);
     height: 100%;
     text-decoration: none;
 }
@@ -2291,6 +2295,7 @@ html.gh-navigation-open {
 @media (width >= 1300px) {
     .gh-toc > .toc-list {
         padding-right: 28px;
+        font-weight: 550;
     }
 
     .post-template .gh-content > .gh-sidebar {
@@ -2307,11 +2312,12 @@ html.gh-navigation-open {
     }
 
     .gh-toc .is-active-link::before {
-        background-color: var(--secondary-color);
+        background-color: var(--color-active-link);
     }
 
     .gh-toc .toc-link.is-active-link {
-        color: var(--secondary-color);
+        color: var(--color-active-link);
+        font-weight: 700;
     }
 
     .toc-hr {
@@ -2395,8 +2401,9 @@ unless a heading is the very first element in the post content */
 }
 
 .gh-content a {
-    color: var(--primary-color);
+    color: var(--color-link);
     text-decoration: underline;
+    font-weight: bold;
 }
 
 .gh-content a:hover {
@@ -2601,7 +2608,7 @@ img.gh-feature-image {
 
 blockquote:not([class]) {
     padding-left: 2rem;
-    border-left: 4px solid var(--primary-color);
+    border-left: var(--border-thick-size) solid var(--primary-color);
 }
 
 blockquote.kg-blockquote-alt {
@@ -2728,7 +2735,7 @@ figcaption {
 }
 
 figcaption a {
-    color: var(--primary-color);
+    color: var(--color-link);
     text-decoration: underline;
 }
 
@@ -3517,7 +3524,7 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
     height: 14px;
     margin: 0;
     background: none;
-    border: 2px solid white;
+    border: var(--border-size) solid white;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-radius: 50%;
@@ -3630,22 +3637,14 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #e0ded8;
-        --color-lighter-gray: #dddad3;
+        --color-lighter-gray: #d6d2ca;
+        --color-light-gray: #ceccc7;
+        --color-dark-gray: #353432;
         --color-darker-gray: #292929;
-        --color-secondary-text: #595959;
-    }
+        --color-secondary-text: #595750;
 
-    .gh-form:hover {
-        background-color: var(--color-lighter-gray);
-    }
-
-    .gh-form-input {
-        color: var(--color-primary-text);
-    }
-
-    .gh-form-input::placeholder,
-    button.gh-form-input {
-        color: var(--color-secondary-text);
+        /*--color-link:var(--primary-color);
+        --color-active-link: var(--secondary-color);*/
     }
 }
 
@@ -3653,12 +3652,12 @@ body[class^="gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-head
 /* ---------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-    .gh-header.is-classic.has-image::before {
-        transition: none;
-    }
-
-    .gh-card img {
-        transition: none;
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 
     .gh-card:hover img {
