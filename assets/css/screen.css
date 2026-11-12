@@ -2058,7 +2058,7 @@ html.gh-navigation-open {
     justify-content: left;
     gap: 8px 14px;
     flex-wrap: wrap;
-    margin: 0;
+    margin-bottom: 12px;
     padding-top: 10px;
 }
 
