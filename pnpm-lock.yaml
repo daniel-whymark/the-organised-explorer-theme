@@ -1144,14 +1144,14 @@ packages:
     engines: {node: '>=0.10.0', npm: '>2.7.0'}
     os: [aix, darwin, freebsd, linux, macos, openbsd, sunos, win32, windows]
 
-  '@tryghost/debug@2.3.19':
-    resolution: {integrity: sha512-+Jm8sDYrHHyVB5TLk9ydf0cZVP9YmMXnRqTuqmUF3iRNjvotRaajg9oyYqdjjl7ZG2tM9pB4QNYiA8xhJ+7FYQ==}
+  '@tryghost/debug@2.3.20':
+    resolution: {integrity: sha512-BJqwOihEs7R7LsdxjfUBW3DYf26ZrjaDuu4WNhiP91FR5Ve6xUDRML3+YNdfF2bvIpBgJdgNIqC1mTaAxSjUfw==}
 
   '@tryghost/errors@1.3.13':
     resolution: {integrity: sha512-sXFcuU8Nn3mDcVrLBLFThQZImn+T2w7v/jJGJzdFnSKJstqxd1LyTRlMjpCpgCnqAgHFCaP+uFg7x4CX64VBJQ==}
 
-  '@tryghost/errors@3.4.5':
-    resolution: {integrity: sha512-5yX4K5TZmtz2MJzYWFIUY1Ls0+TvZ6hC331xgq/yUzp7USXL2KfWOJ1+ih8Wlp8bhv0NrozsixgV/O5YoYvUHg==}
+  '@tryghost/errors@3.4.6':
+    resolution: {integrity: sha512-ASkzjp0gZrJ0KBEDdzFwU2CMiNjVv35gDhMjPHrE3HM+tOPLjCGKVyJTAESd+5dGg4oVnvbLa0JMy0GlcS3GGQ==}
 
   '@tryghost/mongo-knex@0.11.2':
     resolution: {integrity: sha512-0l7L/J609p+12+rA15Muya1JoIeSfBxIUZRB2FfROtJ2U+FTEOzZ/c0HgxB8eAArJMW2VXECmLCAbNUwygRzfg==}
@@ -1165,20 +1165,20 @@ packages:
   '@tryghost/nql@0.13.4':
     resolution: {integrity: sha512-XE3lEpkqZM3ueOyKz5suwb2W4muWAM/YfYYpXHrnu0H7r46Xuo7FZm1s6Ga2Cut/STtuax5E6NfZ1AFv017X4w==}
 
-  '@tryghost/pretty-cli@3.4.1':
-    resolution: {integrity: sha512-5Aaah32+aA4W6AAbDadm8S1hr959NINU2fTWXNstAhqaP+NIq+gbpYtl93Hef8CN4L4WTXnRFUGjMyhcvgJSNg==}
+  '@tryghost/pretty-cli@3.4.2':
+    resolution: {integrity: sha512-SKkmWUOG/ffapL32bkqwnMq9heVrSDib/cZS0a7mCIfTyqHhQ4z2UDt+TkHj2wqqH90H8B605+1Yn0Tw6DiFCA==}
 
   '@tryghost/release-utils@0.9.4':
     resolution: {integrity: sha512-mbbURJJYk77h/w/jATVqvePMJO5ZO+ENaZAiLbpE5Xa6NbjKORSyqJmi8skK4v39aE+v6uWw6h/D0ILh/JiPVg==}
 
-  '@tryghost/root-utils@2.3.19':
-    resolution: {integrity: sha512-PIFzf2FUBiDe9H7UZ5om1yX/LgIpl7L96dtcgxahGqEhss5/OLVePaPTAray+VV3Nx7o/VM5HTOVPvuGai3mSw==}
+  '@tryghost/root-utils@2.3.20':
+    resolution: {integrity: sha512-C+DsVB4FouSYmX6dfHwU6X3mHi78G4NfuafwODwVfCiBoYn0G6XfPq4EAFC+LRAyxRs112MbyR/YALxz9oh+Nw==}
 
   '@tryghost/theme-translations@0.0.22':
     resolution: {integrity: sha512-mOF0cNyxhxVkPAcfgNes5hkmoEafr+WucKxKOP0cnmHnKHOvVPltSZ0psgBphD7owROjK1e/zT9qTtLKf7AWHg==}
 
-  '@tryghost/zip@4.0.0':
-    resolution: {integrity: sha512-ICRWghmm5LLgv3WmroexWzUY0peg9UsI/e2Aabcz/nWTHX4aqQ4IYqwfSE7MdX6pbUKADwFxh4lodP1f+GCiAw==}
+  '@tryghost/zip@4.0.1':
+    resolution: {integrity: sha512-xj+r/pEchwAK8YZzJvSn977S03J2RoiXGQn6qmZakWAd7VOEncUvvTlsp6k+QVYgmhHoE+AvhpItcuYBuduTvg==}
 
   '@types/expect@1.20.4':
     resolution: {integrity: sha512-Q5Vn3yjTDyCMV50TB6VRIbQNxSE4OmZR86VSbGaNpfUolm0iePBB4KdEEHmxoY5sT2+2DIvXW0rvMDP2nHZ4Mg==}
@@ -1551,8 +1551,8 @@ packages:
     resolution: {integrity: sha512-ktkaa6XR7COAR3oj02CF3IOgz2m1hCaY3SfzvKT4Svt2MhHw9XCt+ncJNWfe2TGz31iqzNGZ8spdKQflj+Rlog==}
     engines: {node: '>=14.16'}
 
-  electron-to-chromium@1.5.478:
-    resolution: {integrity: sha512-pftG+ma5Lm8O6/p45bhYT6StBN5ziQymaRzmCZwFl8DwWHKPPD93FdOmP1aqftcepolQYvrcyTLa17kE8Yf+jg==}
+  electron-to-chromium@1.5.479:
+    resolution: {integrity: sha512-uAJdJQ7vHa4TvPfzt1TOqoRgHmav5gwmqHMPLxBH6m8Cbj5R9/z/rygTOQiZ8pe5g0ZAEogga1bP6HoKcOzx/Q==}
 
   emoji-regex@10.6.0:
     resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
@@ -2000,8 +2000,8 @@ packages:
     resolution: {integrity: sha512-wwLXMbuxSF8gMvubFcFRp56lkFV69twvbU5vDPbaw+Q+/rF8j0HKjGbIdlSi+LuJm9jf7k9PB+nTxnsLMPcv2Q==}
     engines: {node: '>=10.13.0'}
 
-  lilconfig@3.1.4:
-    resolution: {integrity: sha512-zJZyBmQhArDRefuWTypZxwDpFDIYmrj8ypSBvwGD5P13Y95s6DjzKgu4DVdGbeQa5PDEsAOCAPNk4X+QOR006w==}
+  lilconfig@3.1.5:
+    resolution: {integrity: sha512-aRAOI9Ia43ygL4o1EOmC/sc/0OFxrm7qcQngiIyWaqVnSnz932ybJ07zyCcgMNGSDP8Yxaf88Xj1zHEXmvQ4SA==}
     engines: {node: '>=14'}
 
   livereload-js@2.4.0:
@@ -3584,9 +3584,9 @@ snapshots:
       '@stdlib/utils-constructor-name': 0.2.3
       '@stdlib/utils-global': 0.2.3
 
-  '@tryghost/debug@2.3.19(supports-color@7.2.0)':
+  '@tryghost/debug@2.3.20(supports-color@7.2.0)':
     dependencies:
-      '@tryghost/root-utils': 2.3.19
+      '@tryghost/root-utils': 2.3.20
       debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
@@ -3598,7 +3598,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tryghost/errors@3.4.5': {}
+  '@tryghost/errors@3.4.6': {}
 
   '@tryghost/mongo-knex@0.11.2(supports-color@7.2.0)':
     dependencies:
@@ -3625,7 +3625,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tryghost/pretty-cli@3.4.1':
+  '@tryghost/pretty-cli@3.4.2':
     dependencies:
       chalk: 6.0.1
       sywac: 1.3.0
@@ -3641,16 +3641,16 @@ snapshots:
       - debug
       - supports-color
 
-  '@tryghost/root-utils@2.3.19':
+  '@tryghost/root-utils@2.3.20':
     dependencies:
       caller: 1.1.0
       find-root: 1.1.0
 
   '@tryghost/theme-translations@0.0.22': {}
 
-  '@tryghost/zip@4.0.0(bare-buffer@3.7.1)':
+  '@tryghost/zip@4.0.1(bare-buffer@3.7.1)':
     dependencies:
-      '@tryghost/errors': 3.4.5
+      '@tryghost/errors': 3.4.6
       archiver: 8.0.0(bare-buffer@3.7.1)
       yauzl: 3.4.0
     transitivePeerDependencies:
@@ -3852,7 +3852,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.11.35
       caniuse-lite: 1.0.30001823
-      electron-to-chromium: 1.5.478
+      electron-to-chromium: 1.5.479
       node-releases: 2.0.63
       update-browserslist-db: 1.3.4(browserslist@4.29.5)
 
@@ -4033,7 +4033,7 @@ snapshots:
 
   easy-transform-stream@1.0.1: {}
 
-  electron-to-chromium@1.5.478: {}
+  electron-to-chromium@1.5.479: {}
 
   emoji-regex@10.6.0: {}
 
@@ -4295,11 +4295,11 @@ snapshots:
 
   gscan@6.7.0(bare-buffer@3.7.1)(supports-color@7.2.0):
     dependencies:
-      '@tryghost/debug': 2.3.19(supports-color@7.2.0)
-      '@tryghost/errors': 3.4.5
+      '@tryghost/debug': 2.3.20(supports-color@7.2.0)
+      '@tryghost/errors': 3.4.6
       '@tryghost/nql': 0.13.4(supports-color@7.2.0)
-      '@tryghost/pretty-cli': 3.4.1
-      '@tryghost/zip': 4.0.0(bare-buffer@3.7.1)
+      '@tryghost/pretty-cli': 3.4.2
+      '@tryghost/zip': 4.0.1(bare-buffer@3.7.1)
       chalk: 6.0.1
       handlebars: 4.7.10
       lodash: 4.18.1
@@ -4553,7 +4553,7 @@ snapshots:
       rechoir: 0.8.0
       resolve: 1.22.14
 
-  lilconfig@3.1.4: {}
+  lilconfig@3.1.5: {}
 
   livereload-js@2.4.0: {}
 
@@ -4714,7 +4714,7 @@ snapshots:
 
   postcss-load-config@5.1.0(postcss@8.5.32):
     dependencies:
-      lilconfig: 3.1.4
+      lilconfig: 3.1.5
       yaml: 2.9.1
     optionalDependencies:
       postcss: 8.5.32
