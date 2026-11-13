@@ -1,36 +1,46 @@
 <section class="gh-header is-classic has-image gh-border gh-outer">
-
     <picture>
         <source
             type="image/avif"
             srcset="{{img_url @site.cover_image size="m" format="avif"}} 600w,
                     {{img_url @site.cover_image size="l" format="avif"}} 960w,
-                    {{img_url @site.cover_image size="cover" format="avif"}} 1175w"
-            sizes="100vw"
-        >
+                    {{img_url @site.cover_image size="xl" format="avif"}} 1200w,
+                    {{img_url @site.cover_image size="xxl" format="avif"}} 2000w,
+                    {{img_url @site.cover_image size="xxxl" format="avif"}} 3200w"
+            sizes="(max-width: 674px) 674px, 100vw"
+        />
         <img
             class="gh-header-image"
             srcset="{{img_url @site.cover_image size="m" format="webp"}} 600w,
                     {{img_url @site.cover_image size="l" format="webp"}} 960w,
-                    {{img_url @site.cover_image size="cover" format="webp"}} 1175w"
-            sizes="100vw"
-            src="{{@site.cover_image}}"
+                    {{img_url @site.cover_image size="xl" format="webp"}} 1200w,
+                    {{img_url @site.cover_image size="xxl" format="webp"}} 2000w,
+                    {{img_url @site.cover_image size="xxxl" format="webp"}} 3200w"
+            sizes="(max-width: 674px) 674px, 100vw"
+            src="{{img_url @site.cover_image size="xl" format="webp"}}"
+            width="8060"
+            height="4534"
             alt="{{@site.title}}"
             fetchpriority="high"
-        >
+        />
     </picture>
 
     <div class="gh-header-inner gh-inner">
-
         <div class="is-title">
             <h1 class="gh-header-title">
-                {{#if @custom.header_text}}{{@custom.header_text}}{{else}}{{@site.title}}{{/if}}
+                {{#if @custom.header_text}}
+                    {{@custom.header_text}}
+                {{else}}
+                    {{@site.title}}
+                {{/if}}
             </h1>
             <p class="gh-header-subtitle">
-                {{#if @custom.signup_subheading}}{{@custom.signup_subheading}}{{else}}{{@site.description}}{{/if}}
+                {{#if @custom.signup_subheading}}
+                    {{@custom.signup_subheading}}
+                {{else}}
+                    {{@site.description}}
+                {{/if}}
             </p>
         </div>
-
     </div>
-
 </section>
