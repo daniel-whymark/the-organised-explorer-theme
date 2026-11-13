@@ -1,6 +1,24 @@
 <section class="gh-header is-classic has-image gh-border gh-outer">
 
-    <img class="gh-header-image" src="{{@site.cover_image}}" alt="{{@site.title}}" fetchpriority="high">
+    <picture>
+        <source
+            type="image/avif"
+            srcset="{{img_url @site.cover_image size="m" format="avif"}} 600w,
+                    {{img_url @site.cover_image size="l" format="avif"}} 960w,
+                    {{img_url @site.cover_image size="cover" format="avif"}} 1175w"
+            sizes="100vw"
+        >
+        <img
+            class="gh-header-image"
+            srcset="{{img_url @site.cover_image size="m" format="webp"}} 600w,
+                    {{img_url @site.cover_image size="l" format="webp"}} 960w,
+                    {{img_url @site.cover_image size="cover" format="webp"}} 1175w"
+            sizes="100vw"
+            src="{{@site.cover_image}}"
+            alt="{{@site.title}}"
+            fetchpriority="high"
+        >
+    </picture>
 
     <div class="gh-header-inner gh-inner">
 
