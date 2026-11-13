@@ -180,7 +180,7 @@ a {
     text-decoration: none;
 }
 
-a:not(.gh-button):not([role="button"]):hover {
+a:not(.gh-button):not([role="button"]):not(:has(img, picture)):hover {
     opacity: 0.8;
 }
 
