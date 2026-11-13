@@ -85,6 +85,9 @@
       },
       "xxl": {
         "width": 2000
+      },
+      "xxxl": {
+        "width": 3200
       }
     },
     "custom": {
