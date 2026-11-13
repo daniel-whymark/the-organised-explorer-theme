@@ -24,7 +24,11 @@
                     <div class="gh-feed">
                         {{#get "tags" limit="all" include="count.posts" order="name asc" filter="slug:~^'place-'"}}
                             {{#foreach tags}}
-                                {{> "tag-card" title=name}}
+                                {{#match @index "<" @config.posts_per_page}}
+                                    {{> "tag-card" title=name highpriority=true}}
+                                {{else}}
+                                    {{> "tag-card" title=name lazyLoad=true}}
+                                {{/match}}
                             {{/foreach}}
                         {{/get}}
                     </div>
