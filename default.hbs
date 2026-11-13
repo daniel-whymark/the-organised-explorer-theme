@@ -39,8 +39,20 @@
     </style>
 
     {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings, it should always be the last tag before the closing head tag --}}
-    {{#is "home"}}
+    {{#is "home,tag,author"}}
         {{ghost_head exclude="card_assets"}}
+    {{else is "page"}}
+        {{#match post.slug "continents"}}
+            {{ghost_head exclude="card_assets"}}
+        {{else match post.slug "countries"}}
+            {{ghost_head exclude="card_assets"}}
+        {{else match post.slug "regions"}}
+            {{ghost_head exclude="card_assets"}}
+        {{else match post.slug "places"}}
+            {{ghost_head exclude="card_assets"}}
+        {{else}}
+            {{ghost_head}}
+        {{/match}}
     {{else}}
         {{ghost_head}}
     {{/is}}
