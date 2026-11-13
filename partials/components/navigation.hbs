@@ -7,15 +7,17 @@
                     <picture>
                         <source
                             srcset="{{img_url @site.logo size="s" format="avif"}} 320w,
-                                    {{img_url @site.logo size="m" format="avif"}} 600w"
+                                {{img_url @site.logo size="m" format="avif"}} 600w,
+                                {{img_url @site.logo format="avif"}} 854w"
                             sizes="251px"
                             type="image/avif"
                         >
                         <img
                             srcset="{{img_url @site.logo size="s" format="webp"}} 320w,
-                                    {{img_url @site.logo size="m" format="webp"}} 600w"
+                                    {{img_url @site.logo size="m" format="webp"}} 600w,
+                                    {{img_url @site.logo format="webp"}} 854w"
                             sizes="251px"
-                            src="{{img_url @site.logo size="s" format="webp"}}"
+                            src="{{img_url @site.logo format="webp"}}"
                             width="854"
                             height="204"
                             alt="{{@site.title}}"
