@@ -24,7 +24,7 @@
                         sizes="{{#if imageSizes}}{{imageSizes}}{{else}}{{#if lazyLoad}}auto, (max-width: 1199px) 100vw, 980px{{else}}320px{{/if}}{{/if}}"
                         src="{{img_url feature_image size="m"}}"
                         alt="{{name}}"
-                        {{#if lazyLoad}}loading="lazy"{{/if}}
+                        {{#if lazyLoad}}loading="lazy"{{else}}fetchpriority=high{{/if}}
                     >
                 </picture>
             </figure>
