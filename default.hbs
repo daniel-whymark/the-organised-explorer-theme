@@ -42,13 +42,13 @@
     {{#is "home,tag,author"}}
         {{ghost_head exclude="card_assets"}}
     {{else is "page"}}
-        {{#match post.slug "continents"}}
+        {{#match post.slug "continent"}}
             {{ghost_head exclude="card_assets"}}
-        {{else match post.slug "countries"}}
+        {{else match post.slug "country"}}
             {{ghost_head exclude="card_assets"}}
-        {{else match post.slug "regions"}}
+        {{else match post.slug "region"}}
             {{ghost_head exclude="card_assets"}}
-        {{else match post.slug "places"}}
+        {{else match post.slug "place"}}
             {{ghost_head exclude="card_assets"}}
         {{else}}
             {{ghost_head}}
