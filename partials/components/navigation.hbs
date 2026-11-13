@@ -4,7 +4,24 @@
         <div class="gh-navigation-brand">
             <a class="gh-navigation-logo is-title" href="{{@site.url}}">
                 {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}">
+                    <picture>
+                        <source
+                            srcset="{{img_url @site.logo size="s" format="avif"}} 320w,
+                                    {{img_url @site.logo size="m" format="avif"}} 600w"
+                            sizes="251px"
+                            type="image/avif"
+                        >
+                        <img
+                            srcset="{{img_url @site.logo size="s" format="webp"}} 320w,
+                                    {{img_url @site.logo size="m" format="webp"}} 600w"
+                            sizes="251px"
+                            src="{{img_url @site.logo size="s" format="webp"}}"
+                            width="854"
+                            height="204"
+                            alt="{{@site.title}}"
+                            fetchpriority=high
+                        >
+                    </picture>
                 {{else}}
                     {{@site.title}}
                 {{/if}}
