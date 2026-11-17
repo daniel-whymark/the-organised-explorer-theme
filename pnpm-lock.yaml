@@ -392,11 +392,11 @@ packages:
   '@tryghost/debug@2.3.22':
     resolution: {integrity: sha512-P1UhE2cMjXtAmraqZL8ogEXiAbk4nScTy6Qk+siqMmgGZ4PEbPBw+PIDnHymJmvwXr55bfXQ+iD9J66IKfXe3g==}
 
-  '@tryghost/errors@3.4.5':
-    resolution: {integrity: sha512-5yX4K5TZmtz2MJzYWFIUY1Ls0+TvZ6hC331xgq/yUzp7USXL2KfWOJ1+ih8Wlp8bhv0NrozsixgV/O5YoYvUHg==}
-
   '@tryghost/errors@3.4.6':
     resolution: {integrity: sha512-ASkzjp0gZrJ0KBEDdzFwU2CMiNjVv35gDhMjPHrE3HM+tOPLjCGKVyJTAESd+5dGg4oVnvbLa0JMy0GlcS3GGQ==}
+
+  '@tryghost/errors@3.4.8':
+    resolution: {integrity: sha512-wRQPjb0TuTW6ROexYKEevbePGHQTY443pTJO3/3EDZlxzWLizdP64EkL0pVh+9Y9E/wfRdyqIjzECc5+rxhTDQ==}
 
   '@tryghost/mongo-knex@0.11.2':
     resolution: {integrity: sha512-0l7L/J609p+12+rA15Muya1JoIeSfBxIUZRB2FfROtJ2U+FTEOzZ/c0HgxB8eAArJMW2VXECmLCAbNUwygRzfg==}
@@ -1304,10 +1304,6 @@ packages:
     resolution: {integrity: sha512-gSrprq0fJ3EiOErzjdIZrjysVVmJ4uu1QWfCDss5LypA5OXvrMje5Ym5z6V6RLyJ2eF87lasX7t6a0AnFvZblg==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  mute-stream@4.0.0:
-    resolution: {integrity: sha512-gSrprq0fJ3EiOErzjdIZrjysVVmJ4uu1QWfCDss5LypA5OXvrMje5Ym5z6V6RLyJ2eF87lasX7t6a0AnFvZblg==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
-
   nanoid@3.3.20:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
@@ -1972,9 +1968,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tryghost/errors@3.4.5': {}
-
   '@tryghost/errors@3.4.6': {}
+
+  '@tryghost/errors@3.4.8': {}
 
   '@tryghost/mongo-knex@0.11.2(supports-color@7.2.0)':
     dependencies:
@@ -2958,7 +2954,7 @@ snapshots:
   minimatch@11.0.5:
     dependencies:
       '@isaacs/nonrecursive-glob-match': 1.1.0
-      brace-expansion: 5.0.12
+      brace-expansion: 5.0.13
 
   minimatch@3.1.5:
     dependencies:
@@ -2969,8 +2965,6 @@ snapshots:
   ms@2.1.3: {}
 
   mute-stdout@2.0.0: {}
-
-  mute-stream@4.0.0: {}
 
   mute-stream@4.0.0: {}
 
