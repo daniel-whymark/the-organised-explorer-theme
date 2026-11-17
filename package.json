@@ -20,7 +20,7 @@
         "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then git push --follow-tags; else echo \"Uncommitted changes found.\" && exit 1; fi",
         "postship": "git fetch && gulp release"
     },
-    "packageManager": "pnpm@12.18.0",
+    "packageManager": "pnpm@12.20.0",
     "author": {
         "name": "Daniel Whymark",
         "email": "hi@theorganisedexplorer.com",
@@ -45,7 +45,7 @@
     "bugs": "https://github.com/daniel-whymark/the-organised-explorer-theme/issues",
     "contributors": "https://github.com/daniel-whymark/the-organised-explorer-theme/graphs/contributors",
     "devDependencies": {
-        "@tryghost/release-utils": "0.9.4",
+        "@tryghost/release-utils": "0.10.1",
         "@tryghost/theme-translations": "0.0.22",
         "autoprefixer": "10.6.2",
         "beeper": "2.1.0",
@@ -57,8 +57,8 @@
         "gulp-postcss": "10.0.0",
         "gulp-uglify": "3.0.2",
         "gulp-zip": "6.1.0",
-        "inquirer": "14.2.5",
-        "postcss": "8.5.32",
+        "inquirer": "14.3.0",
+        "postcss": "8.5.33",
         "postcss-easy-import": "4.0.0",
         "pump": "3.0.4"
     },
